@@ -119,6 +119,11 @@
         @media (min-width: 992px) {
           height: initial;
         }
+        @media (min-width: 1400px) {
+          height: initial;
+          max-height: 623px;
+          object-position: top right;
+        }
       }
     }
     .#{$p}__content {
