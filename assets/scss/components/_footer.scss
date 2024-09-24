@@ -1,16 +1,22 @@
 #footer {
   background-color: #000;
-  padding-block: 50px;
+  padding-top: 50px;
+  padding-bottom: 0;
 
   .list-slugs {
+    padding-left: 0;
     list-style: none;
-    margin-top: 30px;
+    margin-top: 20px;
     &__item {
       margin-top: 3px;
     }
     &__link {
       font-size: 18px;
       color: white;
+    }
+    @media (min-width: 992px) {
+      padding-left: 32px;
+      margin-top: 30px;
     }
   }
 
@@ -33,5 +39,4 @@
       }
     }
   }
-  // form-footer-contact__entrar
 }

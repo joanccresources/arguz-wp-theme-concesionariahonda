@@ -58,15 +58,19 @@
   };
 
   const addButtonInHeader = () => {
-    const container = document.querySelector(
-      "#navbar #menu-primary-menu + .others-option"
-    );
+    // const container = document.querySelector(
+    //   "#navbar #menu-primary-menu + .others-option"
+    // );
+    const container = document.querySelector("#navbar .navbar-toggler");
     if (!container) return;
-    container.innerHTML = `
-      <button class="btn-menu">
-        <img src="${urlAssets}/img/menu-burger.svg" alt="menu-icon" class="btn-menu__img"/>
-      </button>
+    container.innerHTML = `      
+      <img src="${urlAssets}/img/menu-burger.svg" alt="menu-icon" class="btn-menu__img"/>
     `;
+    // container.innerHTML = `
+    //   <button class="btn-menu">
+    //     <img src="${urlAssets}/img/menu-burger.svg" alt="menu-icon" class="btn-menu__img"/>
+    //   </button>
+    // `;
   };
 
   const initDomReady = () => {

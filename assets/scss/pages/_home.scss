@@ -279,10 +279,13 @@
     }
 
     .elementor-container:has(.card-icon) {
+      @media (min-width: 992px) {
+        flex-wrap: nowrap;
+      }
     }
     .card-icon {
       width: 50%;
-      @media (min-width: 768px) {
+      @media (min-width: 992px) {
         width: 100%;
       }
     }
