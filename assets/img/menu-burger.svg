@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="51.52002"
+   height="34.498665"
+   viewBox="0 0 51.520021 34.498665"
+   sodipodi:docname="MAQUETA_WEB_SOrsa_motors.pdf"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath113">
+      <path
+         d="M 0,3719.28 H 1366 V 0 H 0 Z"
+         id="path113" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath115">
+      <path
+         d="M 0,3719.28 H 1366 V 0 H 0 Z"
+         id="path115" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath117">
+      <path
+         d="M 0,3719.28 H 1366 V 0 H 0 Z"
+         id="path117" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050" />
+  <g
+     id="layer-MC0"
+     inkscape:groupmode="layer"
+     inkscape:label="Capa 1"
+     transform="translate(-1886.6646,-77.849366)">
+    <g
+       id="g146"
+       transform="translate(143.41142,-1.617422)">
+      <path
+         id="path144"
+         d="m 1345.996,3652.841 h -38.471 v 6.839 h 38.471 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(1.3333333,0,0,-1.3333333,0,4959.04)"
+         clip-path="url(#clipPath113)" />
+      <path
+         id="path145"
+         d="m 1345.911,3643.381 h -38.471 v 6.839 h 38.471 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(1.3333333,0,0,-1.3333333,0,4959.04)"
+         clip-path="url(#clipPath115)" />
+      <path
+         id="path146"
+         d="m 1346.08,3633.806 h -38.471 v 6.839 h 38.471 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(1.3333333,0,0,-1.3333333,0,4959.04)"
+         clip-path="url(#clipPath117)" />
+    </g>
+  </g>
+</svg>

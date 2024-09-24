@@ -1,0 +1,19 @@
+#navbar {
+  background-color: $gris-sorsa-02;
+  position: static !important;
+  .navbar-brand {
+    &.logo {
+      width: 199px;
+    }
+  }
+  .btn-menu {
+    border: none;
+    background: none;
+    &__img {
+      width: 30px;
+    }
+  }
+
+  @media (min-width: 992px) {
+  }
+}
