@@ -12,6 +12,9 @@
   <?php if (is_page("home")): ?>
     <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/home.css?v=<?= time() ?>">
   <?php endif; ?>
+  <?php if (is_page("agenda-tu-cita")): ?>
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/agenda-tu-cita.css?v=<?= time() ?>">
+  <?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>

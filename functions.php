@@ -9,6 +9,13 @@ function eura_enqueue_style()
   if (is_page("home")) {
     wp_enqueue_script('home-script', get_stylesheet_directory_uri() . '/assets/js/home.js?v=' . time(), array(), null, true);
   }
+  if (is_page("agenda-tu-cita")) {
+    // Agregar el CSS de Flatpickr
+    wp_enqueue_style('flatpickr-css', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
+    // Agregar el script de Flatpickr
+    wp_enqueue_script('flatpickr-script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), null, true);
+    wp_enqueue_script('agenda-tu-cita-script', get_stylesheet_directory_uri() . '/assets/js/agenda-tu-cita.js?v=' . time(), array(), null, true);
+  }
 
   wp_enqueue_style("parent-style", get_parent_theme_file_uri("/style.css"));
 }
