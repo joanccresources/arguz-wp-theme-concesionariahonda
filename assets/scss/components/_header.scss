@@ -17,6 +17,18 @@
     + .others-option {
       display: none !important;
     }
+    .nav-item {
+      .nav-link {
+        line-height: 1.2;
+        border: none;
+      }
+      &.current-menu-item {
+        .nav-link {
+          color: $rojo-sorsa-01;
+          font-weight: 800;
+        }
+      }
+    }
   }
 
   // Eliminar iconos de mobile

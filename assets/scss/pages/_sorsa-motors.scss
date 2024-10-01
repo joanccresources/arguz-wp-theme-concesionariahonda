@@ -1,0 +1,47 @@
+[id*="motors-"] {
+  &.motors-main {
+    /* Permalink - use to edit and share this gradient. Enlace permanente - úsalo para editar y compartir este gradiente: https://colorzilla.com/gradient-editor/#ff0000+30,ffffff+30 */
+
+    .card-motors-main {
+      > .elementor-container {
+        column-gap: 30px;
+      }
+    }
+    @include m(1024) {
+      background: linear-gradient(to right, #ff0000 30%, #ffffff 30%);
+    }
+  }
+
+  &.motors-mision-vision {
+    $p: "motors-mision-vision";
+    .#{$p}__col {
+      .elementor-widget-wrap {
+        padding: 30px 30px 60px 30px !important;
+      }
+    }
+  }
+
+  &.motors-valores {
+    $p: "motors-valores";
+    .#{$p}__body {
+      // color: red;
+      & > .elementor-container {
+        justify-content: center;
+        column-gap: 45px;
+      }
+    }
+  }
+  // motors-valores__body
+}
+
+// Ocultar Hero por defecto de la pagina
+.breadcrumb-wrap {
+  display: none !important;
+}
+// Quitar padding del wrapper de la pagina
+.page-wrapper {
+  > .page-main-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

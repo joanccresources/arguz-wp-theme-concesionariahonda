@@ -1,0 +1,15 @@
+// card-home-valores__img
+.card-home-valores {
+  max-width: 100% !important;
+  width: 300px !important;
+  &__img {
+    height: 109px;
+    .elementor-widget-container {
+      height: 100%;
+    }
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

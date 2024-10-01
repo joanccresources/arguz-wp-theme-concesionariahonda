@@ -1,0 +1,27 @@
+.title-motors {
+  h2 {
+    border: 1px solid black;
+    color: $rojo-sorsa-02;
+    display: inline-block;
+    margin: 0;
+    padding: 10px 70px;
+    font-size: 38px;
+    line-height: 0.9;
+    width: calc(100% + -24px);
+    margin-left: 12px;
+    margin-right: 12px;
+    .first {
+      color: $negro-sorsa-01;
+      font-size: inherit;
+    }
+    // @include m(768) {
+    //   line-height: 1;
+    // }
+    @media (min-width: 768px) {
+      line-height: 1;
+      width: initial;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

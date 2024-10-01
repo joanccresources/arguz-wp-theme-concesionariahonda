@@ -1,0 +1,16 @@
+[id*="concesionaria-"] {
+  &.concesionaria-main {
+  }
+}
+
+// Ocultar Hero por defecto de la pagina
+.breadcrumb-wrap {
+  display: none !important;
+}
+// Quitar padding del wrapper de la pagina
+.page-wrapper {
+  > .page-main-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
