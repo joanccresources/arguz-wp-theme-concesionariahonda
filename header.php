@@ -9,21 +9,22 @@
 
   <!-- Global css -->
   <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/main.css?v=<?= time() ?>">
-  <?php if (is_page("home")): ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/home.css?v=<?= time() ?>">
-  <?php endif; ?>
-  <?php if (is_page("agenda-tu-cita")): ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/agenda-tu-cita.css?v=<?= time() ?>">
-  <?php endif; ?>
-  <?php if (is_page("sorsa-motors")): ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/sorsa-motors.css?v=<?= time() ?>">
-  <?php endif; ?>
-  <?php if (is_page("concesionaria-honda")): ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/concesionaria-honda.css?v=<?= time() ?>">
-  <?php endif; ?>
-  <?php if (is_page("repuestos-honda")): ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/repuestos-honda.css?v=<?= time() ?>">
-  <?php endif; ?>
+  <?php
+  $page_styles = [
+    'home' => 'home.css',
+    'agenda-tu-cita' => 'agenda-tu-cita.css',
+    'sorsa-motors' => 'sorsa-motors.css',
+    'concesionaria-honda' => 'concesionaria-honda.css',
+    'repuestos-honda' => 'repuestos-honda.css',
+    'servicio-tecnico-autorizado' => 'servicio-tecnico-autorizado.css',
+  ];
+
+  // Verifica si la página actual está en el array y carga la hoja de estilo correspondiente
+  $current_page = get_post_field('post_name', get_post());
+  if (array_key_exists($current_page, $page_styles)) {
+    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/' . $page_styles[$current_page] . '?v=' . time() . '">';
+  }
+  ?>
 </head>
 
 <body <?php body_class(); ?>>

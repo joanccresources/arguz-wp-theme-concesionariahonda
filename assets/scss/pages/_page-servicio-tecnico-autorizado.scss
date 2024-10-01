@@ -1,0 +1,50 @@
+[id*="tecnico-"] {
+  &.tecnico-hero {
+    $p: "tecnico-hero";
+  }
+
+  &.tecnico-motto {
+    $p: "tecnico-motto";
+    background-color: $negro-sorsa-02;
+  }
+
+  &.tecnico-tienda {
+    $p: "tecnico-tienda";
+    .card-tienda {
+    }
+  }
+
+  &.tecnico-cintillo {
+    $p: "tecnico-cintillo";
+    .#{$p}__img {
+      a {
+        display: block;
+      }
+      img {
+        width: calc(100% + 60px);
+        max-width: calc(100% + 60px);
+        object-fit: cover;
+        object-position: -60px;
+        // margin-left: -30px;
+        @media (min-width: 768px) {
+          margin-left: 0;
+          width: 100%;
+          max-width: 100%;
+          object-position: 0;
+        }
+      }
+    }
+  }
+}
+
+// Ocultar Hero por defecto de la pagina
+.breadcrumb-wrap {
+  display: none !important;
+}
+// Quitar padding del wrapper de la pagina
+.page-wrapper {
+  > .page-main-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
