@@ -21,6 +21,9 @@
   <?php if (is_page("concesionaria-honda")): ?>
     <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/concesionaria-honda.css?v=<?= time() ?>">
   <?php endif; ?>
+  <?php if (is_page("repuestos-honda")): ?>
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/repuestos-honda.css?v=<?= time() ?>">
+  <?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>
