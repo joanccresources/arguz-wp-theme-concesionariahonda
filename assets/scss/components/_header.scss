@@ -41,3 +41,30 @@
   @media (min-width: 992px) {
   }
 }
+
+#navbarOffcanvas {
+  #menu-primary-menu-1 {
+    .menu-item {
+      a {
+        br {
+          display: none !important;
+        }
+        &:hover {
+          color: $rojo-sorsa-01;
+        }
+      }
+      &.current-menu-item {
+        a {
+          color: $rojo-sorsa-01;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+  
+  .logo {
+    img {
+      width: 245px;
+    }
+  }
+}
