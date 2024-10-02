@@ -17,6 +17,7 @@
     'concesionaria-honda' => 'concesionaria-honda.css',
     'repuestos-honda' => 'repuestos-honda.css',
     'servicio-tecnico-autorizado' => 'servicio-tecnico-autorizado.css',
+    'comunidad-motera' => 'comunidad-motera.css'
   ];
 
   // Verifica si la página actual está en el array y carga la hoja de estilo correspondiente
