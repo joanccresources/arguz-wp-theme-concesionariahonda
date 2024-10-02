@@ -32,7 +32,7 @@ function comunidad_entradas_shortcode($atts)
 
       // Crear el HTML para cada entrada
       echo '<div class="entrada-item">';
-      echo '<div class="entrada-imagen">' . $imagen . '</div>';
+      echo '<div class="entrada-imagen"><a href="' . $link . '">' . $imagen . '</a></div>';
       echo '<h3 class="entrada-titulo"><a href="' . $link . '">' . $titulo . '</a></h3>';
       echo '<p class="entrada-excerpt">' . $excerpt . '</p>';
       echo '</div>';

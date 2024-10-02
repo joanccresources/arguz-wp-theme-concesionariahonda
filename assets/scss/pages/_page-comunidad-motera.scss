@@ -69,7 +69,9 @@
         padding: 10px;
         padding-top: 0;
         text-align: center;
-
+        .entrada-imagen a {
+          display: block;
+        }
         .entrada-imagen img {
           max-width: 100%;
           width: 100%;
