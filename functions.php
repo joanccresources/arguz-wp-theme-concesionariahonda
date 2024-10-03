@@ -70,3 +70,39 @@ reescritura de WordPress se actualicen*/
 
 // Shortcodes
 require_once get_stylesheet_directory() . '/shortcodes/load-shortcodes.php';
+
+
+// Woocommerce
+// add_action('woocommerce_before_main_content', 'agregar_contenido_arriba');
+// function agregar_contenido_arriba()
+// {
+//   echo '<div class="contenido-arriba"><h1>Encabezado Personalizado</h1></div>';
+// }
+
+// add_action('woocommerce_before_main_content', 'agregar_contenido_arriba');
+function agregar_contenido_arriba()
+{
+?>
+  <div class="concesionaria-hero" id="concesionaria-hero">
+    <div class="concesionaria-hero__figure">
+      <img src="<?= get_site_url() ?>/wp-content/uploads/2024/10/0-768x295.png"
+        srcset="<?= get_site_url() ?>/wp-content/uploads/2024/10/0.png 768w"
+        sizes="(min-width: 768px) 768px, 100vw"
+        alt="Concesionaria Honda Banner"
+        class="concesionaria-hero__img" />
+    </div>
+  </div>
+  <div class="concesionaria-cards" id="concesionaria-cards">
+
+    <div class="concesionaria-hero__figure">
+      <img src="<?= get_site_url() ?>/wp-content/uploads/2024/10/0-768x295.png"
+        srcset="<?= get_site_url() ?>/wp-content/uploads/2024/10/0.png 768w"
+        sizes="(min-width: 768px) 768px, 100vw"
+        alt="Concesionaria Honda Banner"
+        class="concesionaria-hero__img" />
+    </div>
+    
+  </div>
+<?php
+}
+?>

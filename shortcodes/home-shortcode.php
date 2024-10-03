@@ -1,8 +1,8 @@
 <?php
+// ¿QUE MODELOS HONDA BUSCAS?
 function shortcode_home_modelos($atts)
 {
   ob_start();
-
   // Categorías a excluir (por slug)
   // $excluded_slugs = array('uncategorized', 'stunt-bike', 'bike-gloves', 'bike-helmate', 'bike-pumper', 'city-bike', 'electric-bike', 'electric-glide', 'featured', 'gear-bike', 'kids-bike', 'mountain-bike', 'ride-bike', 'scooters');
   // Obtener los IDs de las categorías a excluir usando sus slugs
@@ -18,7 +18,7 @@ function shortcode_home_modelos($atts)
     'taxonomy' => 'product_cat',
     // 'exclude' => $excluded_ids,
     'slug'       => $included_slugs, // Solo incluir estas categorías
-    'hide_empty' => false, // true para ocultar las categorías vacías 
+    'hide_empty' => false, // true para ocultar las categorías vacías
   ));
 
   // Comprobar si hay categorías disponibles
@@ -61,15 +61,21 @@ function shortcode_home_modelos($atts)
 
           // Obtener la imagen del producto
           // $product_image = get_the_post_thumbnail(get_the_ID(), 'medium');
-          $thumbnail_id = get_post_thumbnail_id(get_the_ID()); // Obtener ID del thumbnail
-          $product_image_url = wp_get_attachment_url($thumbnail_id); // Obtener la URL
+          // $thumbnail_id = get_post_thumbnail_id(get_the_ID()); // Obtener ID del thumbnail
+          // $product_image_url = wp_get_attachment_url($thumbnail_id); // Obtener la URL
 
-          echo '<div class="modelos-list__item">';
-          echo '<a href="' . esc_url($product_link) . '" class="modelos-list__link">';
-          // echo $product_image; // Mostrar la imagen del producto
-          echo '<img src="' . $product_image_url . '" alt="' . get_the_title() . '" class="modelos-list__img"/>';
-          echo '</a>';
-          echo '</div>';
+          // Obtener la imagen personalizada del campo 'imagen_para_el_home'
+          // $imagen_home_id = get_field('imagen_para_el_home', get_the_ID()); // Obtener el ID del campo personalizado
+          
+          $imagen_home_id = get_post_meta(get_the_ID(), 'imagen_para_el_home', true);
+          $imagen_home_url = wp_get_attachment_url($imagen_home_id);
+          if (!empty($imagen_home_url)) {
+            echo '<div class="modelos-list__item">';
+            echo '<a href="' . esc_url($product_link) . '" class="modelos-list__link">';            
+            echo '<img src="' . esc_url($imagen_home_url) . '" alt="' . get_the_title() . '" class="modelos-list__img" />';
+            echo '</a>';
+            echo '</div>';
+          }
         }
 
         echo '</div>';
@@ -77,7 +83,6 @@ function shortcode_home_modelos($atts)
         echo '<p>No hay productos en esta categoría.</p>';
       }
       echo '</div>';
-
       // Restaurar los datos originales después de la consulta
       wp_reset_postdata();
     }

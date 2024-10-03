@@ -25,6 +25,10 @@
   if (array_key_exists($current_page, $page_styles)) {
     echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/' . $page_styles[$current_page] . '?v=' . time() . '">';
   }
+  // Shop de woocommerce
+  if (is_shop() || is_product_category()) {
+    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/shop.css?v=' . time() . '">';
+  }
 
   // Estilos para entradas individuales
   // if ((is_single() && get_post_type() == 'post') || is_category() || is_tag() || is_search()) {

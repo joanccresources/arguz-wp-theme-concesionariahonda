@@ -1,0 +1,273 @@
+#primary {
+  .concesionaria-hero {
+    &__img {
+      width: 100%;
+      object-fit: cover;
+      height: 352px;
+      @media (min-width: 768px) {
+        height: auto;
+      }
+    }
+  }
+
+  // Se oculto opciones de filtro
+  #secondary {
+    border: none;
+    .product-categories {
+      .cat-item {
+        &.current-cat {
+          a,
+          .count {
+            color: $rojo-sorsa-02 !important;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    > .widget_product_search {
+      margin-bottom: 25px;
+    }
+
+    input.search-field {
+      border-radius: initial;
+      background-color: white;
+      &:focus {
+        border-color: $rojo-sorsa-02;
+      }
+      &::placeholder {
+        opacity: 0.85;
+      }
+    }
+
+    // Ocultando
+    // .widget_price_filter {
+    //   display: none !important;
+    // }
+    // .widget_top_rated_products {
+    //   display: none !important;
+    // }
+    // .widget_product_tag_cloud {
+    //   display: none !important;
+    // }
+
+    @media (max-width: 1199px) {
+      margin-top: 0;
+    }
+  }
+
+  //
+  .woocommerce-ordering {
+    &:has(> select[name*="orderby"]) {
+      display: none !important;
+    }
+  }
+
+  // Producto no encontrado
+  .woocommerce-no-products-found {
+    .woocommerce-info {
+      border-left-color: $rojo-sorsa-02;
+      &::before {
+        color: $rojo-sorsa-02;
+      }
+    }
+  }
+
+  // Colores
+  .woocommerce-widget-layered-nav-list {
+    a {
+      &:hover {
+        color: $rojo-sorsa-02 !important;
+      }
+    }
+  }
+
+  // Productos destacados
+  .product_list_widget {
+    a {
+      // Ocultar precio de los destacados
+      + .amount {
+        display: none;
+      }
+      // Transparente la imagen
+      img {
+        background-color: transparent;
+        object-fit: cover;
+      }
+      // Titulo de los destacados
+      .product-title {
+        font-size: 14px;
+      }
+      &:hover {
+        span {
+          color: $rojo-sorsa-02;
+        }
+      }
+    }
+  }
+
+  .concesionaria-modelo__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2px;
+    margin-top: 2px;
+    flex-wrap: wrap;
+    .card-concesionaria-modelo {
+      &:nth-of-type(1) {
+        width: calc(50% + -1px);
+        // &__img {
+        //   height: 200px;
+        // }
+      }
+      &:nth-of-type(2) {
+        width: calc(50% + -1px);
+      }
+      &:nth-of-type(3) {
+        width: 100%;
+      }
+      @media (min-width: 992px) {
+      }
+    }
+    @media (min-width: 992px) {
+      flex-wrap: nowrap;
+    }
+  }
+  .card-concesionaria-modelo {
+    display: block;
+    position: relative;
+    //
+    flex: 0 0 auto;
+    width: 100%;
+    &__title {
+      position: absolute;
+      left: 7px;
+      bottom: 12px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
+      display: inline-block;
+      width: 125px;
+      line-height: 1.1;
+      margin-bottom: 0;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        left: 15px;
+        bottom: 15px;
+      }
+      @media (min-width: 1200px) {
+        font-size: 21px;
+      }
+    }
+    // card-concesionaria-modelo__img
+    &__img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      @media (min-width: 992px) {
+        height: auto;
+      }
+    }
+    @media (min-width: 992px) {
+      width: auto !important;
+      flex: auto;
+    }
+  }
+
+  .special-products-area {
+    .title-motors {
+      h2 {
+        @media (max-width: 767px) {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+    // .col-lg-4:has(#secondary) {
+    //   @media (min-width: 992px) {
+    //     width: 25%;
+    //   }
+    // }
+    // .col-lg-8:has(> .woocommerce-topbar) {
+    //   @media (min-width: 992px) {
+    //     width: 75%;
+    //   }
+    // }
+  }
+
+  //
+  .woocommerce-topbar {
+    + .row {
+      .product-card {
+        border: 1px solid;
+        border-color: transparent;
+        transition: all 0.25s;
+        .product-img {
+          background-color: transparent;
+          // padding-bottom: 0;
+          padding: 0;
+          a {
+            padding-inline: 50px;
+            height: 170px;
+            display: flex !important;
+            align-items: flex-end;
+          }
+        }
+        // Ocultar colores de las cards en shop
+        .card-btns {
+          // No se podra seleccionar los colores
+          [data-attribute_name="attribute_pa_color"] {
+            .swatch-item-wrapper {
+              pointer-events: none;
+            }
+          }
+
+          // Ocultar boton de agregar 1
+          .single_add_to_cart_button {
+            display: none !important;
+          }
+          // Ocultar boton de agregar 2
+          [data-success_message] {
+            display: none !important;
+          }
+        }
+        .posted_in {
+          a {
+            text-transform: uppercase;
+            font-size: 12px;
+            color: $rojo-sorsa-02;
+          }
+        }
+        .product-ratings {
+          line-height: 1;
+        }
+        .product-title {
+          .fw-semibold {
+            line-height: 1;
+          }
+          a {
+            font-size: 16px;
+            text-transform: uppercase;
+            &:hover {
+              color: $rojo-sorsa-02;
+            }
+          }
+        }
+        .ratings {
+          .d-flex:has(> .rating) {
+            display: none !important;
+          }
+        }
+        &:hover {
+          border-color: $rojo-sorsa-02;
+        }
+      }
+    }
+  }
+
+  .breadcrumb-wrap {
+    display: none !important;
+  }
+}
