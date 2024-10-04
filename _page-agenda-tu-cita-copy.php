@@ -2,11 +2,13 @@
 
 <section id="agenda-tu-cita">
   <div class="container py-5">
+
     <!-- <div class="row">
       <div class="col-12">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores repellendus reprehenderit iusto saepe ducimus quia ad commodi suscipit inventore facilis architecto nesciunt dolores nihil sit iure itaque, soluta magni temporibus!</p>
       </div>
     </div> -->
+
     <div class="row">
       <div class="col-md-6">
         <!-- loader -->
@@ -58,6 +60,10 @@
           <?= do_shortcode('[contact-form-7 id="467e44a" title="Reserva tu cita"]'); ?>
           <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/gif-loader.gif" alt="Image Loader" class="reserva-image-loader" width="60" height="60">
         </div>
+      </div>
+
+      <div class="col-12 mt-5">
+        <?= do_shortcode('[contact-form-7 id="e8febdb" title="Test Contact"]'); ?>
       </div>
     </div>
   </div>

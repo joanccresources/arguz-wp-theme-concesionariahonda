@@ -21,7 +21,6 @@
       display: none;
       position: absolute;
     }
-
     .flatpickr-input {
       background-color: #fff;
       // &[disabled="false"] {
@@ -29,6 +28,14 @@
       // }
       &:disabled {
         background-color: #e9ecef;
+      }
+    }
+
+    select {
+      height: 38px;
+      font-size: 14px;
+      &:focus {
+        border-color: $rojo-sorsa-03;
       }
     }
   }
@@ -91,6 +98,21 @@
       border-color: $amarillo-sorsa;
       color: white;
     }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      height: 41px;
+      font-size: 15px;
+      padding-block: 6px;
+    }
+    label {
+      font-size: 15px;
+    }
+    textarea {
+      height: 150px;
+      font-size: 15px;
+    }
   }
   // Resumen
   .resume {
@@ -99,6 +121,9 @@
     }
     .value {
       text-align: left;
+    }
+    table {
+      border-bottom: 1px solid rgb(222, 226, 230);
     }
   }
 
@@ -111,13 +136,38 @@
   //   padding-block: 7px;
   // }
 
-  @media (min-width: 992px) {
-    margin-top: 80px;
-  }
+  // @media (min-width: 992px) {
+  //   margin-top: 80px;
+  // }
 }
 
 .no-validate {
   pointer-events: none !important;
   user-select: none !important;
   opacity: 0.5 !important;
+}
+
+.btn-send-form-reserva {
+  background-color: $rojo-sorsa-03;
+  border-color: $rojo-sorsa-03;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding-block: 7px;
+  display: block;
+  text-align: center;
+}
+
+#content-data-horas {
+  button {
+    &.btn-primary {
+      background-color: $rojo-sorsa-03;
+      color: #fff;
+    }
+    &:hover {
+      background-color: $rojo-sorsa-03;
+      opacity: 0.75;
+      color: #fff;
+    }
+  }
 }

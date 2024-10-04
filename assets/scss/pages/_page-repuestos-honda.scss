@@ -10,6 +10,105 @@
 
   &.repuestos-reserva {
     $p: "repuestos-reserva";
+
+    .repuestos-honda-form {
+      label {
+        margin-bottom: 0;
+        font-size: 12px;
+      }
+      input:not([type="hidden"], [type="checkbox"], [type="submit"]) {
+        height: 45px;
+      }
+      input:not([type="hidden"], [type="checkbox"], [type="submit"]),
+      select,
+      textarea {
+        font-size: 14px;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      .wpcf7-not-valid-tip {
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .form-control:focus {
+        border-color: $rojo-sorsa-02;
+      }
+      .form-select:focus {
+        border-color: $rojo-sorsa-02;
+        box-shadow: none;
+      }
+
+      .form-check {
+        position: relative;
+        padding-top: 7.5px;
+        #acepto_terminos {
+          float: none;
+          display: block;
+          margin-left: 0;
+          width: auto;
+          height: auto;
+          margin-top: 0;
+          background-color: transparent;
+          border: none;
+        }
+        .wpcf7-form-control-wrap {
+          display: block;
+          position: static;
+        }
+
+        label[for="acepto_terminos"] {
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          column-gap: 3px;
+        }
+        .wpcf7-not-valid-tip {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: calc(100% + -5px);
+        }
+
+        .wpcf7-list-item {
+          // display: flex;
+          // justify-content: flex-start;
+          // align-items: center;
+          // column-gap: 8px;
+          // font-size: 14px;
+        }
+        input[type="checkbox"] {
+          width: 16px;
+          accent-color: $rojo-sorsa-02;
+        }
+        br {
+          display: none;
+        }
+      }
+
+      p:has(> input[type="submit"]) {
+        text-align: center;
+      }
+      input[type="submit"] {
+        background-color: $rojo-sorsa-03;
+        color: white;
+        display: inline-block;
+        min-width: 220px;
+        width: auto;
+        border-radius: initial;
+        font-size: 16px;
+        font-weight: 600;
+        &:hover {
+          background-color: darken($rojo-sorsa-03, 10%);
+        }
+      }
+    }
+    // .repuestos-honda-form input:not([type="hidden"],[type="checkbox"],[type="submit"])
+    // .repuestos-honda-form label {
+    //   margin-bottom: 0;
+    //   font-size: 12px;
+    // }
   }
 
   &.repuestos-cintillo {
