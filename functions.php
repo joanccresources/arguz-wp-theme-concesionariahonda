@@ -63,6 +63,10 @@ function custom_body_class($classes)
     $classes[] = 'single-slug-all'; // Clase para entradas individuales
   if (is_category())
     $classes[] = 'category-slug-all'; // Clase para páginas de categoría
+  if (is_shop())
+    $classes[] = 'woo-slug-shop';
+  if (is_product_category())
+    $classes[] = 'woo-slug-product-category';
   return $classes;
 }
 add_filter('body_class', 'custom_body_class');

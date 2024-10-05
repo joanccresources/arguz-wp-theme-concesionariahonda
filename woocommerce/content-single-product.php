@@ -1,13 +1,12 @@
 <?php
+/*
+  URL: concesionariahonda.sorsa.pe/shop/producto-01
+  UI: All
+*/
 defined('ABSPATH') || exit;
 
 global $product;
 
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
 do_action('woocommerce_before_single_product');
 
 if (post_password_required()) {
@@ -122,7 +121,7 @@ if (post_password_required()) {
       <?php endif; ?>
     </div>
   <?php } elseif (function_exists('acf_add_options_page') && get_field('single_pro_style') == 'thumb_style') { ?>
-    <div class="row align-items-center">
+    <div class="row align-items-center __v1">
       <?php if ($attachment_ids && $product->get_image_id()) { ?>
         <div class="col-lg-5 col-md-12">
           <div class="products-details-thumbs-image">
@@ -229,7 +228,8 @@ if (post_password_required()) {
       </div>
     </div>
   <?php } else { ?>
-    <div class="row align-items-center">
+    <!-- sorsa -->
+    <div class="row align-items-center __v2">
       <div class="col-lg-7 col-md-12">
         <div class="products-details-image">
           <?php

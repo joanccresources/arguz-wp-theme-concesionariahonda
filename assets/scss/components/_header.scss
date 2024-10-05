@@ -1,5 +1,22 @@
+body {
+  &.page-slug-home {
+    #navbar {
+      background-color: $gris-sorsa-02;
+      .sticky {
+        background-color: $gris-sorsa-02;
+      }
+    }
+  }
+  &.woo-slug-shop,
+  &.woo-slug-product-category {
+    top: 0 !important;
+  }
+}
+// body.woocommerce-shop {
+//   top: 0;
+// }
+
 #navbar {
-  background-color: $gris-sorsa-02;
   position: static !important;
   .navbar-brand {
     &.logo {
@@ -61,7 +78,7 @@
       }
     }
   }
-  
+
   .logo {
     img {
       width: 245px;
