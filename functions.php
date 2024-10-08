@@ -67,6 +67,8 @@ function custom_body_class($classes)
     $classes[] = 'woo-slug-shop';
   if (is_product_category())
     $classes[] = 'woo-slug-product-category';
+  if (is_product())
+    $classes[] = 'woo-slug-product';
   return $classes;
 }
 add_filter('body_class', 'custom_body_class');

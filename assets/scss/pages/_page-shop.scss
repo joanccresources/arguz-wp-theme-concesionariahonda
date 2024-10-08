@@ -270,4 +270,63 @@
   .breadcrumb-wrap {
     display: none !important;
   }
+
+  // Los colores con espacio derecho
+  .product-card.style-five
+    .product-img
+    .card-btns
+    .variations
+    tbody
+    tr
+    td
+    .tawcvs-swatches {
+    margin-right: 10px !important;
+  }
+}
+
+body.woo-slug-product {
+  .products_details.ptb-150 {
+    padding-block: 30px;
+    @media (min-width: 768px) {
+      padding-block: 50px;
+    }
+  }
+
+  img.zoomImg {
+    object-fit: contain;
+  }
+
+  //
+  .products-details-desc {
+    .d-flex:has(> .products-review.ratings) {
+      display: none !important;
+    }
+    .price {
+      display: none !important;
+    }
+
+    .products-info {
+      li:nth-of-type(1) {
+        display: none !important;
+      }
+    }
+
+    .yith-wcwl-add-to-wishlist {
+      display: none !important;
+    }
+
+    .single_add_to_cart_button {
+      margin-top: 10px;
+    }
+  }
+
+  #tabs {
+    #tab-title-reviews {
+      display: none !important;
+    }
+  }
+  // woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images
+  .products-details-image .flex-viewport::before {
+    background-color: transparent !important;
+  }
 }
