@@ -5,4 +5,18 @@
     padding-block: 18px;
     padding-inline: 30px;
   }
+  &--main {
+    a {
+      font-weight: 700;
+      background-color: #ff0000;
+      color: #fff;
+      font-size: 18px;
+      padding-block: 18px;
+      padding-inline: 30px;
+      display: inline-block;
+      &:hover {
+        background-color: darken(#ff0000, 10%);
+      }
+    }
+  }
 }

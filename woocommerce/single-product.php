@@ -116,23 +116,11 @@ if (!empty($product_cats) && !is_wp_error($product_cats)):
 
   if ($hero_imagen && $hero_titulo):
 ?>
-    <style>
-      /*
-      #hero-product {
-        width: 100%;
-        height: 400px;        
-        background-image: url('');
-        background-position: 30% 0;        
-        background-size: 70% 100%;        
-        background-repeat: no-repeat;        
-      }
-      */
-    </style>
     <div class="hero-product" id="hero-product">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 align-self-center">
-            <div>
+          <div class="col-md-4 align-self-center py-3 py-md-0">
+            <div class="pe-md-3">
               <div class="hero-product__figure-logo">
                 <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/logo-honda-detalle-producto.png" alt="Logo Honda" class="hero-product__logo">
               </div>
@@ -165,16 +153,18 @@ if (!empty($product_cats) && !is_wp_error($product_cats)):
             <div class="col-lg-12 col-md-12">
             <?php elseif ($eura_shop_cat_sidebar == 'left'): ?>
               <?php do_action('woocommerce_sidebar'); ?>
-              <div class="col-lg-8 col-md-12">
+              <div class="col-lg-8 col-md-12 _prod_1">
               <?php elseif ($eura_shop_cat_sidebar == 'right'): ?>
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-8 col-md-12 _prod_2">
                 <?php endif; ?>
               <?php else: ?>
                 <?php if ($product_sidebar == 'left-sidebar'): ?>
-                  <?php do_action('woocommerce_sidebar'); ?>
-                  <div class="col-lg-8 col-md-12">
+                  <!-- Sorsa -->
+                  <?php /*do_action('woocommerce_sidebar');*/ ?>
+                  <!-- <div class="col-lg-8 col-md-12 _prod_3"> -->
+                  <div class="col-12 _prod_3">
                   <?php elseif ($product_sidebar == 'right-sidebar'): ?>
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-8 col-md-12 _prod_4">
                     <?php else: ?>
                       <div class="col-lg-12 col-md-12">
                       <?php endif; ?>

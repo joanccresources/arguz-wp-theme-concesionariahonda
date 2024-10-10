@@ -280,7 +280,8 @@
     tr
     td
     .tawcvs-swatches {
-    margin-right: 10px !important;
+    // margin-right: 10px !important;
+    margin-right: 20px !important;
   }
 }
 
@@ -304,19 +305,20 @@ body.woo-slug-product {
     .price {
       display: none !important;
     }
-
     .products-info {
       li:nth-of-type(1) {
         display: none !important;
       }
     }
-
     .yith-wcwl-add-to-wishlist {
       display: none !important;
     }
-
     .single_add_to_cart_button {
       margin-top: 10px;
+    }
+
+    @media (max-width: 991px) {
+      margin-top: 0;
     }
   }
 
@@ -347,6 +349,8 @@ body.woo-slug-product {
       position: relative;
       color: $negro-sorsa-01;
       display: inline-block;
+      line-height: 1;
+      max-width: 430px;
       &::before {
         content: "";
         background-color: $rojo-sorsa-02;
@@ -361,5 +365,296 @@ body.woo-slug-product {
       @media (min-width: 992px) {
       }
     }
+  }
+  .woo {
+    &__variations {
+      border: none !important;
+
+      .label:not(.color) {
+        display: none !important;
+      }
+      .value:not(.list-color) {
+        display: none !important;
+      }
+    }
+    &-product {
+      &__category {
+        a {
+          color: $rojo-sorsa-02;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      }
+      &__title {
+        font-family: "Archivo", sans-serif;
+        font-size: 38px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        color: #1a1a1a;
+        display: inline-block;
+        line-height: 1;
+        @media (max-width: 767px) {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  .woocommerce-product-details__short-description {
+    p {
+      @media (min-width: 768px) {
+        font-size: 18px !important;
+      }
+    }
+  }
+
+  // colores
+  #woo-variations {
+    .list-color {
+      [data-attribute_name] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      .swatch-item-wrapper {
+        margin-right: 0 !important;
+        .swatch-shape-circle {
+          width: 30px !important;
+          height: 30px !important;
+          border-radius: inherit !important;
+          border: none !important;
+          &::before {
+            border: none !important;
+          }
+        }
+      }
+    }
+    label[for="pa_color"] {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+  }
+
+  // Tabla
+  #tabs {
+    border: 0 !important;
+    margin-bottom: 0 !important;
+    li:not(#tab-title-description) {
+      display: none !important;
+    }
+    li {
+      a {
+        font-family: "Archivo", sans-serif !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        color: #1a1a1a !important;
+        display: inline-block;
+        line-height: 1;
+        @media (max-width: 767px) {
+          font-size: 20px !important;
+          span {
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+  }
+  #tab-description {
+    table {
+      width: 992px;
+      max-width: 100%;
+      margin: auto;
+      tr {
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.25);
+      }
+      td,
+      th {
+        font-size: 16px;
+        border: none !important;
+        b {
+          display: block;
+          width: 100%;
+          @media (min-width: 768px) {
+            padding-left: 10px;
+            display: inline;
+            width: initial;
+          }
+          // @media (max-width: 767px) {
+          //   font-size: 18px;
+          // }
+        }
+      }
+    }
+  }
+
+  // Formulario
+  .woo-registro {
+    &__title {
+      font-family: "Archivo", sans-serif !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+      color: #1a1a1a !important;
+      display: inline-block;
+      line-height: 1;
+      font-size: 24px;
+      @media (max-width: 767px) {
+        font-size: 20px;
+        line-height: 1.15;
+      }
+    }
+  }
+
+  // form:has(>#producto-contacto-form) input:not([type="hidden"]):not([type="submit"]):not([type="checkbox"])
+  form:has(> #producto-contacto-form) {
+    input:not([type="hidden"]):not([type="submit"]):not([type="checkbox"]),
+    select {
+      height: 45px;
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid #b3b3b3;
+      border-radius: inherit;
+      @media (max-width: 767px) {
+        height: 35px;
+      }
+      &:focus {
+        border: none !important;
+        box-shadow: none;
+        border-bottom: 1px solid darken(#b3b3b3, 50%) !important; // Oscurece el color un poco
+      }
+    }
+    .form-label {
+      padding-left: 10px;
+      font-size: 14px;
+    }
+
+    // checkbox
+    .form-check {
+      position: relative;
+      br {
+        display: none !important;
+      }
+      .wpcf7-list-item {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 5px;
+      }
+      input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+      }
+
+      .wpcf7-form-control-wrap {
+        position: static;
+      }
+
+      .wpcf7-not-valid-tip {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: -25px;
+      }
+    }
+
+    // Submit
+    p:has(> [type="submit"]) {
+      text-align: right;
+    }
+    [type="submit"] {
+      font-weight: 700;
+      background-color: #ff0000 !important;
+      color: #fff;
+      font-size: 18px;
+      padding-block: 18px;
+      padding-inline: 60px;
+      display: inline-block;
+      width: initial;
+      border-radius: initial;
+      &:hover {
+        background-color: darken(#ff0000, 10%) !important;
+      }
+    }
+  }
+
+  //
+  .col-lg-3.col-md-12:has(> #secondary) {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
+  #secondary {
+    .widget_product_search,
+    .widget_product_categories {
+      display: none !important;
+    }
+
+    .widget_top_rated_products {
+      .product_list_widget {
+        display: flex;
+        justify-content: center;
+        @media (max-width: 767px) {
+          flex-wrap: wrap;
+        }
+      }
+      li {
+        border: none;
+        //
+        flex: 0 0 auto;
+        width: 100%;
+        @media (min-width: 768px) {
+          width: 33.3333%;
+        }
+        @media (min-width: 1200px) {
+          // width: 33.3333%;
+          width: 25%;
+        }
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 30px;
+          border: 1px solid #fff;
+          img {
+            width: 100% !important;
+            height: 200px !important;
+            padding: 0;
+            margin-left: 0;
+            margin-right: 0 !important;
+          }
+          .product-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-top: 8px;
+          }
+          &:hover {
+            border-color: $rojo-sorsa-02;
+          }
+        }
+      }
+      // h3
+      .sidebar-widget-title {
+        font-family: "Archivo", sans-serif !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        color: #1a1a1a !important;
+        display: inline-block;
+        line-height: 1;
+        font-size: 24px;
+        @media (max-width: 767px) {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  // .woocommerce-tabs {
+  //   @media (max-width: 767px) {
+  //     margin-top: 10px;
+  //   }
+  // }
+
+  @media (max-width: 767px) {
+    top: 0 !important;
   }
 }

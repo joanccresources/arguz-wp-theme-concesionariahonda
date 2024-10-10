@@ -247,7 +247,8 @@ if (post_password_required()) {
       </div>
 
       <div class="col-lg-5 col-md-12">
-        <div class="products-details-desc single-product-desc">
+        <!-- Sorsa -->
+        <div class="products-details-desc single-product-desc sorsa_">
           <div class="d-flex align-items-center">
             <p class="mb-0"><?php echo esc_html('Brand:', 'eura'); ?> <strong class="text-title">
                 <?php
@@ -276,14 +277,24 @@ if (post_password_required()) {
               }
             } ?>
           </div>
-          <h3><?php echo get_the_title(); ?></h3>
-          <?php woocommerce_template_loop_price(); ?>
 
+          <?php echo wc_get_product_category_list($product->get_id(), ', ', '<span class="woo-product__category">' . _n('', '', count($product->get_category_ids()),  'eura') . ' ', '</span>'); ?>
+          <div>
+            <h3 class="woo-product__title"><?= get_the_title(); ?></h3>
+          </div>
+
+          <?php /* woocommerce_template_loop_price(); */ ?>
           <?php woocommerce_template_single_excerpt(); ?>
 
-          <div class="product_meta">
+          <div class="btn-honda--main mt-4 mt-md-4 mt-xl-5">
+            <a href="#0">¡COTIZA AHORA!</a>
+          </div>
+
+          <!-- hidden -->
+          <div class="product_meta d-none sorsa_">
             <?php woocommerce_template_single_meta(); ?>
           </div>
+
           <?php if (class_exists('YITH_WCWL')) { ?>
             <?php echo preg_replace("/<img[^>]+\>/i", " ", do_shortcode('[yith_wcwl_add_to_wishlist]')); ?>
           <?php } ?>
@@ -336,7 +347,6 @@ if (post_password_required()) {
         </div>
       </div>
     </div>
-
   <?php } ?>
 
   <?php
@@ -349,8 +359,22 @@ if (post_password_required()) {
    */
   remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
   do_action('woocommerce_after_single_product_summary');
-
   ?>
+  <!-- Sorsa -->
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="mt-3 mt-md-5 woo-registro">
+        <div class="text-center">
+          <p class="woo-registro__title">REGISTRA TUS DATOS Y UN ASESOR SE CONTACTARÁ CONTIGO</p>
+        </div>
+        <div class="mt-4 woo-registro__content">
+          <?= do_shortcode('[contact-form-7 id="00b15c1" title="Producto Contacto"]'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php do_action('woocommerce_sidebar'); ?>
 </div>
 
 <?php do_action('woocommerce_after_single_product'); ?>
