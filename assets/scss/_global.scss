@@ -9,3 +9,9 @@
     @include btn-motors(black, black, #fff);
   }
 }
+
+.btn-rojo-blanco {
+  a {
+    @include btn-motors($rojo-sorsa-02, $rojo-sorsa-02, #fff);
+  }
+}

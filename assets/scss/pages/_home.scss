@@ -173,6 +173,15 @@
     .modelos-list {
       display: flex;
       gap: 5px;
+
+      &__item {
+        img {
+          @media (min-width: 992px) {
+            height: 180px;
+            object-fit: cover;
+          }
+        }
+      }
     }
   }
 

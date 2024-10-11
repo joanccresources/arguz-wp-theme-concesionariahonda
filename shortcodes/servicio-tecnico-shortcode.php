@@ -63,7 +63,7 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
     ?>
         <div class="card-tienda wow fadeIn slow" data-wow-delay="0.2s">
           <div class="row justify-content-between align-items-center">
-            <div class="col-md-6 col-lg-7">
+            <div class="col-md-6">
               <a
                 target="_blank"
                 href="<?= esc_url($url_mapa); ?>"
@@ -71,7 +71,7 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
                 <img decoding="async" src="<?= esc_url($featured_img_url); ?>" alt="" class="card-tienda__img" />
               </a>
             </div>
-            <div class="col-md-6 col-lg-5">
+            <div class="col-md-6">
               <div class="card-tienda__info">
                 <div class="card-tienda__logo-parent">
                   <img src="https://concesionariahonda.sorsa.pe/wp-content/uploads/2024/09/logo-sorsa-main.svg" alt="Logo" class="card-tienda__logo">
@@ -82,8 +82,14 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
                 <div class="card-tienda__description pb-2">
                   <?= wp_kses_post($content); ?>
                 </div>
-                <div class="btn-negro-blanco">
-                  <a href="<?= esc_url($url_mapa); ?>" target="_blank">VER EN EL MAPA</a>
+
+                <div class="card-tienda__btn-group">
+                  <div class="btn-negro-blanco">
+                    <a href="<?= esc_url($url_mapa); ?>" target="_blank">VER EN EL MAPA</a>
+                  </div>
+                  <div class="btn-rojo-blanco">
+                    <a href="https://concesionariahonda.sorsa.pe/agenda-tu-cita/">AGENDA TU CITA</a>
+                  </div>
                 </div>
               </div>
             </div>

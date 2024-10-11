@@ -249,11 +249,34 @@ if (! empty($product_categories) && ! is_wp_error($product_categories)) {
                      * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
                      */
                     do_action('woocommerce_after_main_content');
-
+                    ?>
+                    <!--  -->
+                    <?php
+                    $banner_footer_id = get_post_meta($shop_page_id, 'banner_footer', true);
+                    $banner_footer_url = wp_get_attachment_url($banner_footer_id);
+                    if ($banner_footer_url):
+                    ?>
+                      <div class="banner-footer" id="banner-footer">
+                        <div class="banner-footer__figure">
+                          <img src="<?= esc_url($banner_footer_url) ?>" alt="Banner Footer" class="banner-footer__img">
+                        </div>
+                        <div class="banner-footer__content">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-12">
+                                <a
+                                  target="_blank"
+                                  href="https://wa.me/51954691632?text=¡Hola," class="banner-footer__btn">COTIZA <span>AQUI</span></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+                    <?php
                     /**
                      * Hook: woocommerce_sidebar.
                      *
                      * @hooked woocommerce_get_sidebar - 10
                      */
-
                     get_footer('shop'); ?>

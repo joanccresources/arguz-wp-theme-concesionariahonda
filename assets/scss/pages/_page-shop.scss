@@ -281,7 +281,57 @@
     td
     .tawcvs-swatches {
     // margin-right: 10px !important;
-    margin-right: 20px !important;
+    // margin-right: 20px !important;
+    display: none !important;
+  }
+}
+
+body.woo-slug-shop {
+  .banner-footer {
+    position: relative;
+    &__figure {
+      // position: absolute;
+    }
+    &__img {
+      width: 100%;
+      object-fit: cover;
+      @media (max-width: 767px) {
+        height: 240px;
+      }
+    }
+    &__content {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 70px;
+      @media (max-width: 1199px) {
+        padding-bottom: 30px;
+      }
+    }
+    &__btn {
+      font-weight: 700;
+      background-color: #000000;
+      color: #fff;
+      font-size: 22px;
+      padding-block: 18px;
+      padding-inline: 60px;
+      display: inline-block;
+      span {
+        color: $rojo-sorsa-02;
+        font-size: inherit;
+      }
+      @media (max-width: 767px) {
+        padding-inline: 45px;
+      }
+      &:hover {
+        background-color: darken(#000000, 10%);
+      }
+    }
   }
 }
 

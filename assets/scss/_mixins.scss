@@ -23,12 +23,15 @@
   text-transform: uppercase;
   border-radius: 10px;
   transition: all 0.25s;
-  text-decoration: none !important;  
+  text-decoration: none !important;
   @media (min-width: 768px) {
-    padding-inline: 34px;
+    padding-inline: 24px;
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 18px;
+  }
+  @media (min-width: 1200px) {
+    padding-inline: 34px;
   }
 }
 @mixin btn-motors($fondo, $border, $color-texto) {
