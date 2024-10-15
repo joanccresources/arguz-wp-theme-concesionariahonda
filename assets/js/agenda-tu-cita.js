@@ -1,9 +1,7 @@
 (() => {
-  // https://concesionariahonda.sorsa.pe/
-  // const domain = "https://retail.sorsa.pe/wp-json/wp/v2";
-  // const domainReserva = "https://retail.sorsa.pe/wp-json/asesores/v1";
   const domain = "https://concesionariahonda.sorsa.pe/wp-json/wp/v2";
-  const domainReserva = "https://concesionariahonda.sorsa.pe/wp-json/asesores/v1";
+  const domainReserva =
+    "https://concesionariahonda.sorsa.pe/wp-json/asesores/v1";
   const endpoint = {
     asesor: `${domain}/asesor`,
     ubicacion: `${domain}/ubicacion`,
@@ -250,28 +248,20 @@
         }),
       ];
     }
-    console.log({ horas });
     try {
+      /*
       // Mostrar loader
       elements.reserva.classList.add("loader");
-
       const promesas = horas.map((hora) =>
         fetch(
           `${endpoint.disponibilidad}?asesor_id=${horarios.asesor_id}&fecha=${selectedDateFormat}&hora_inicio=${hora}`
         )
       );
-
       // Ejecutar todas las solicitudes en paralelo con Promise.all
       const responses = await Promise.all(promesas);
-
       // Verificar y obtener los datos de cada respuesta
       const datos = await Promise.all(
-        responses.map((response) => {
-          // if (!response.ok) {
-          //   throw new Error(
-          //     `Error en la solicitud para la hora ${response.url}: ${response.status}`
-          //   );
-          // }
+        responses.map((response) => {          
           const dataJson = response.json();
           if (dataJson.success === false) {
             throw new Error(
@@ -280,15 +270,20 @@
           }
           return dataJson; // Convertir cada respuesta a JSON
         })
-      );
-
+      );    
       horas = horas.map((hora, i) => {
         return {
           hora,
           success: datos[i].success,
         };
+      });  
+      */
+      horas = horas.map((hora, i) => {
+        return {
+          hora,
+          success: true,
+        };
       });
-
       horarios.fecha_reservada = selectedDateFormat;
       showAvailableTimeSlots(horas);
     } catch (error) {
@@ -459,12 +454,13 @@
       elements.formularioAgenda.classList.remove("active");
       // Ocultamos la tabla de resume
       elements.resumeContent.classList.add("d-none");
-      if (locationId) {
+      if (locationId && locationId !== "-") {
         elements.asesora.removeAttribute("disabled");
         await loadAsesores(locationId); // Cargar asesores según la ubicación seleccionada
         // Obtenemos el tiempo del taller
         await getAllDataTaller(locationId);
       } else {
+        elements.asesora.value = "";
         elements.asesora.setAttribute("disabled", "");
       }
     });
@@ -600,13 +596,15 @@
 
     const validate = () => {
       cont = 0;
+      // const $inputs = $form.querySelectorAll(
+      //   "input:not([type='hidden'],[type='submit'])"
+      // );
       const $inputs = $form.querySelectorAll(
-        "input:not([type='hidden'],[type='submit'])"
+        "input:not([type='hidden'],[type='submit'],[type='email'],[name='ano_modelo'])"
       );
       Array.from($inputs).forEach(($input) => {
         if ($input.value.trim().length === 0) cont++;
       });
-
       cont > 0
         ? $btnSend.classList.add("no-validate")
         : $btnSend.classList.remove("no-validate");
@@ -646,7 +644,7 @@
           hora_inicio: horarios.hora_reservada,
           hora_fin: "23:00",
           nombre_cliente: document.getElementById("your-name").value,
-          correo_cliente: document.getElementById("your-email").value,
+          correo_cliente: document.getElementById("your-email").value || "",
         };
         console.log({ data });
 

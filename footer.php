@@ -28,6 +28,9 @@ wp_footer();
         <div class="col-md-3">
           <ul class="list-slugs">
             <li class="list-slugs__item">
+              <a href="https://concesionariahonda.sorsa.pe/sorsa-motors/" class="list-slugs__link">Cultura SORSA</a>
+            </li>
+            <li class="list-slugs__item">
               <a href="#0" class="list-slugs__link">Concesionaria Honda</a>
             </li>
             <li class="list-slugs__item">

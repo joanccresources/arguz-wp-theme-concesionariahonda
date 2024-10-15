@@ -16,7 +16,7 @@ function eura_enqueue_style()
     wp_enqueue_script('flatpickr-script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), null, true);
     wp_enqueue_script('agenda-tu-cita-script', get_stylesheet_directory_uri() . '/assets/js/agenda-tu-cita.js?v=' . time(), array(), null, true);
   }
-  if (is_product()) {    
+  if (is_product()) {
     wp_enqueue_script('product-detail-script', get_stylesheet_directory_uri() . '/assets/js/product-detail.js?v=' . time(), array(), null, true);
   }
 
@@ -89,18 +89,6 @@ function crear_tabla_reservas()
 
   // Verificar si la tabla ya existe
   if ($wpdb->get_var("SHOW TABLES LIKE '$tabla_reservas'") != $tabla_reservas) {
-
-    // $sql = "CREATE TABLE IF NOT EXISTS $tabla_reservas (
-    //       id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    //       asesor_id bigint(20) unsigned NOT NULL,
-    //       fecha date NOT NULL,
-    //       hora_inicio time NOT NULL,
-    //       hora_fin time NOT NULL,
-    //       nombre_cliente varchar(255) NOT NULL,
-    //       correo_cliente varchar(255) NOT NULL,
-    //       PRIMARY KEY (id),
-    //       FOREIGN KEY (asesor_id) REFERENCES {$wpdb->prefix}posts(ID) ON DELETE CASCADE
-    //   ) $charset_collate;";
     $sql = "CREATE TABLE $tabla_reservas (
       id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
       asesor_id bigint(20) unsigned NOT NULL,
@@ -143,6 +131,7 @@ function insertar_reserva($asesor_id, $fecha, $hora_inicio, $hora_fin, $nombre_c
   return $resultado !== false;
 }
 // Validar disponibilidad antes de la reserva
+// Si alguien ya reservo esa fecha con esa hora entonces retorna false
 function verificar_disponibilidad($asesor_id, $fecha, $hora_inicio, $hora_fin)
 {
   global $wpdb;
@@ -208,19 +197,6 @@ function mostrar_reservas()
   $total_results = $wpdb->get_var($wpdb->prepare($count_query, '%' . $wpdb->esc_like($busqueda) . '%', '%' . $wpdb->esc_like($busqueda) . '%'));
   $total_pages = ceil($total_results / $results_per_page);
 
-  // // Consulta SQL
-  // $query = "
-  //     SELECT r.id, r.fecha, r.hora_inicio, r.hora_fin, r.nombre_cliente, r.correo_cliente, a.post_title AS asesor, a.ID AS asesor_id
-  //     FROM $tabla_reservas r
-  //     INNER JOIN $tabla_asesores a ON r.asesor_id = a.ID
-  //     WHERE a.post_title LIKE %s OR r.nombre_cliente LIKE %s
-  //     ORDER BY r.fecha DESC
-  // ";
-  // // Preparar la consulta
-  // $sql = $wpdb->prepare($query, '%' . $wpdb->esc_like($busqueda) . '%', '%' . $wpdb->esc_like($busqueda) . '%');
-  // // Ejecutar la consulta
-  // $reservas = $wpdb->get_results($sql);
-
   // Consulta SQL con paginación  
   $query = "
         SELECT r.id, r.fecha, r.hora_inicio, r.hora_fin, r.nombre_cliente, r.correo_cliente, a.post_title AS asesor, a.ID AS asesor_id
@@ -253,7 +229,6 @@ function mostrar_reservas()
   echo '</form>';
 
   echo '<table class="widefat fixed" cellspacing="0">';
-  // echo '<thead><tr><th>ID</th><th>Asesor</th><th>Fecha</th><th>Hora Inicio</th><th>Hora Fin</th><th>Ubicación</th><th>Nombre Cliente</th><th>Correo Cliente</th><th>Acciones</th></tr></thead>';
   echo '<thead><tr><th>ID</th><th>Asesor</th><th>Fecha</th><th>Hora Inicio</th><th>Ubicación</th><th>Nombre Cliente</th><th>Correo Cliente</th><th>Acciones</th></tr></thead>';
   echo '<tbody>';
 
@@ -345,8 +320,8 @@ function verificar_disponibilidad_callback(WP_REST_Request $request)
 
 
   // Usar la función verificar_disponibilidad para ver si el asesor está disponible
+  // De esta manera si se selecciona una hora, ya no podra seleccionarse dicha hora  
   $disponible = verificar_disponibilidad($asesor_id, $fecha, $hora_inicio, $hora_fin = null); // Puedes ajustar los parámetros según lo que necesites
-
   // Retornar la respuesta en formato JSON
   if ($disponible) {
     return new WP_REST_Response(array('success' => true), 200);
@@ -380,24 +355,16 @@ function insertar_reserva_callback(WP_REST_Request $request)
   $nombre_cliente = sanitize_text_field($request->get_param('nombre_cliente'));
   $correo_cliente = sanitize_email($request->get_param('correo_cliente'));
 
-
-  // // Verificar la disponibilidad
-  // if (!verificar_disponibilidad($asesor_id, $fecha, $hora_inicio, $hora_fin)) {
-  //     return new WP_REST_Response(array('success' => false, 'message' => 'El asesor ya está reservado en el horario especificado'), 400);
-  // }
-
-
   // Validar que los campos obligatorios no estén vacíos
-  if (empty($asesor_id) || empty($fecha) || empty($hora_inicio) || empty($nombre_cliente) || empty($correo_cliente)) {
+  // if (empty($asesor_id) || empty($fecha) || empty($hora_inicio) || empty($nombre_cliente) || empty($correo_cliente)) {
+  if (empty($asesor_id) || empty($fecha) || empty($hora_inicio) || empty($nombre_cliente)) {
     return new WP_REST_Response(array('success' => false, 'message' => 'Datos incompletos'), 400);
   }
-
 
   // Convertir la fecha al formato YYYY-MM-DD si es necesario
   if (!preg_match('/\d{4}-\d{2}-\d{2}/', $fecha)) {
     return new WP_REST_Response(array('success' => false, 'message' => 'Formato de fecha incorrecto. Use YYYY-MM-DD'), 400);
   }
-
 
   // Verificar si el asesor existe en la base de datos (suponiendo que los asesores son posts en WP)
   $asesor_existe = $wpdb->get_var($wpdb->prepare(
@@ -408,41 +375,29 @@ function insertar_reserva_callback(WP_REST_Request $request)
     return new WP_REST_Response(array('success' => false, 'message' => 'El asesor no existe o no está disponible'), 404);
   }
 
-
-  // Verificar que la hora de reserva no sea anterior a la hora actual (en la misma fecha)
-  // date_default_timezone_set('America/Lima'); // Ajusta la zona horaria si es necesario
-  // $hora_actual = current_time('H:i');  // Hora actual en formato HH:mm
-  // $fecha_actual = current_time('Y-m-d');  // Fecha actual
-  // // Si la fecha es hoy, validar la hora
-  // if ($fecha === $fecha_actual && $hora_inicio < $hora_actual) {
-  //     return new WP_REST_Response(array('success' => false, 'message' => 'No puedes reservar en una hora que ya ha pasado'), 409);
-  // }
-
-
   // Verificar que la fecha de reserva no sea anterior a la fecha actual
   date_default_timezone_set('America/Lima'); // Ajusta la zona horaria si es necesario
-  // $fecha_actual = current_time('Y-m-d');  // Fecha actual
   $fecha_actual = date('Y-m-d');  // Fecha actual con la zona horaria correcta
   if ($fecha < $fecha_actual) {
     return new WP_REST_Response(array('success' => false, 'message' => 'No puedes reservar en una fecha anterior a la actual'), 409);
   }
   // Verificar que la hora de reserva no sea anterior a la hora actual (en la misma fecha)
   if ($fecha === $fecha_actual) {
-    // $hora_actual = current_time('H:i');  // Hora actual en formato HH:mm
     $hora_actual = date('H:i');  // Hora actual con la zona horaria correcta
     if ($hora_inicio < $hora_actual) {
       return new WP_REST_Response(array('success' => false, 'message' => 'No puedes reservar en una hora que ya ha pasado'), 409);
     }
   }
 
-
+  // CLIENTE: AHORA SE PUEDEN AGENDAR N reservas a la misma hora
+  /*
   // Llamar a la función para verificar disponibilidad
   $disponible = verificar_disponibilidad($asesor_id, $fecha, $hora_inicio, $hora_fin);
   // Si ya existe una reserva, devolver un error
   if (!$disponible) {
     return new WP_REST_Response(array('success' => false, 'message' => 'Ya existe una reserva para este asesor en esta fecha y hora'), 409); // Código 409: conflicto
   }
-
+  */
 
   // Llamar a la función que inserta la reserva
   // $resultado = insertar_reserva($asesor_id, $fecha, $hora_inicio, $hora_fin);
