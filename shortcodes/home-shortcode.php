@@ -331,12 +331,14 @@ function shortcode_home_mas_vendidos($atts)
       echo '      <figure class="card-mas-vendidos__figure">';
       echo '        <img src="' . $product_image_url . '" alt="' . get_the_title() . '" class="card-mas-vendidos__img"/>';
       echo '      </figure>';
+      echo '      <div class="">';
       if ($terms && ! is_wp_error($terms)) {
         foreach ($terms as $term) {
           echo '<p class="card-mas-vendidos__category">' . esc_html($term->name) . '</p>'; // Mostrar el nombre de la categoría
         }
       }
       echo '      <p class="card-mas-vendidos__title">' . get_the_title() . '</p>';
+      echo '      </div>';
       echo '    </a>';
       echo '  </div>';
       echo '</li>';
@@ -403,7 +405,7 @@ function shortcode_home_mas_vendidos($atts)
             autoplay: {
               delay: 3000,
               waitForTransition: true,
-            },
+            },            
             loop: false,
             // slidesPerView: 4, // 4 slides por defecto
             spaceBetween: 30,
@@ -420,6 +422,9 @@ function shortcode_home_mas_vendidos($atts)
               },
               768: {
                 slidesPerView: 2,
+              },
+              992: {
+                slidesPerView: 3,
               },
               1200: {
                 slidesPerView: 4,

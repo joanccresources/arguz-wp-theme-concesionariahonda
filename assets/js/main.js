@@ -90,18 +90,18 @@
       <div id="top-header" class="top-header">
         <ul class="top-list-rrss">
           <li class="top-list-rrss__item">
-            <a href="#0" target="_blank" class="top-list-rrss__link">
+            <a href="https://www.facebook.com/SorsaMotors" target="_blank" class="top-list-rrss__link">
               <i class="fa fa-facebook top-list-rrss__icon" aria-hidden="true"></i>
             </a>            
           </li>
           <li class="top-list-rrss__item">
-            <a href="#0" target="_blank" class="top-list-rrss__link">
+            <a href="https://www.instagram.com/sorsamotors" target="_blank" class="top-list-rrss__link">
               <i class="fa fa-instagram top-list-rrss__icon" aria-hidden="true"></i>
             </a>
           </li>
         </ul>
         <div>
-          <a class="btn-agenda-cita">
+          <a class="btn-agenda-cita" href="https://concesionariahonda.sorsa.pe/agenda-tu-cita/">
             <img src="${urlAssets}/img/top-moto-logo.png" width="59" height="42" class="btn-agenda-cita__img" />
             <span class="btn-agenda-cita__txt">AGENDA TU CITA</span>
           </a>
@@ -115,12 +115,12 @@
     const container = document.querySelector("body");
     const html = `
       <div class="whatsapp-container">
-        <a class="cta-wsp" href="#0">
-          <img src="${urlAssets}/img/btn-wsp.png" alt="Boton Whatsapp" width="113" height="113" class="cta-wsp__img"/>
-          <div class="cta-wsp__content">
+        <a class="cta-wsp" href="#0">          
+          <div class="cta-wsp__content shadow-lg">
             <span class="cta-wsp__title">¿TIENES UNA DUDA?</span>
             <span class="cta-wsp__txt">Escríbenos</span>
           </div>
+          <img src="${urlAssets}/img/btn-wsp.png" alt="Boton Whatsapp" width="113" height="113" class="cta-wsp__img"/>
         </a>
       </div>
     `;
