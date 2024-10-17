@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="22.400002"
+   height="42.23999"
+   viewBox="0 0 22.400002 42.23999"
+   sodipodi:docname="inka - MAQUETA WEB_ SOrsa motor VERS 2 - copia.pdf"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath193">
+      <path
+         d="M 0,3719.28 H 1366 V 0 H 0 Z"
+         transform="translate(-47.480001,-2439.8401)"
+         id="path193" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050" />
+  <g
+     id="layer-MC0"
+     inkscape:groupmode="layer"
+     inkscape:label="Capa 1"
+     transform="translate(-40.906665,-1663.6799)">
+    <path
+       id="path1"
+       d="M 0.2,0 H 1365.8 V 3719.28 H 0.2 Z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(1.3333333,0,0,-1.3333333,0,4959.04)" />
+    <path
+       id="path192"
+       d="M 0,0 V 31.68 L -16.8,16.32 Z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(1.3333333,0,0,-1.3333333,63.306667,1705.9199)"
+       clip-path="url(#clipPath193)" />
+  </g>
+</svg>

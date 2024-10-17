@@ -1,12 +1,12 @@
 body {
-  &.page-slug-home {
-    #navbar {
-      background-color: $gris-sorsa-02;
-      .sticky {
-        background-color: $gris-sorsa-02;
-      }
-    }
-  }
+  // &.page-slug-home {
+  //   #navbar {
+  //     background-color: $gris-sorsa-02;
+  //     .sticky {
+  //       background-color: $gris-sorsa-02;
+  //     }
+  //   }
+  // }
   &.woo-slug-shop,
   &.woo-slug-product-category {
     top: 0 !important;
@@ -31,17 +31,24 @@ body {
     }
   }
   #menu-primary-menu {
-    + .others-option {
-      display: none !important;
-    }
+    // + .others-option {
+    //   display: none !important;
+    // }
     .nav-item {
       .nav-link {
         line-height: 1.2;
         border: none;
+        color: $negro-sorsa-01;
         //
-        font-family: "Ubuntu", sans-serif;
-        font-weight: 700;
+        // font-family: "Ubuntu", sans-serif;
+        // font-weight: 700;
+        // font-style: normal;
+        font-family: "Russo One";
+        font-weight: normal;
         font-style: normal;
+        br {
+          display: none;
+        }
       }
       &.current-menu-item {
         .nav-link {
@@ -52,11 +59,45 @@ body {
     }
   }
 
+  // Ocultar opciones de woocomerce
+  .option-item:has(> .user-options):nth-last-of-type(1) {
+    display: none !important;
+  }
+
   // Eliminar iconos de mobile
   .navbar-brand + .others-option {
     .option-item:has(> .user-options) {
       display: none !important;
     }
+  }
+
+  // Buscador
+  form[role="search"] {
+    .ri-search-2-line {
+      color: $rojo-sorsa-02;
+    }
+    #woocommerce-product-search-field-0 {
+      border-color: $rojo-sorsa-02;
+      color: #1a1a1a;
+      letter-spacing: 0.15px;
+      //
+      font-family: "Russo One";
+      font-weight: normal;
+      font-style: normal;
+      &::placeholder {
+        color: $gris-sorsa-03;
+        opacity: 0.75;
+      }
+    }
+  }
+
+  .navbar {
+    > .container {
+      flex-wrap: wrap;
+    }
+  }
+  .collapse.navbar-collapse {
+    flex: 0 0 100%;
   }
 
   @media (min-width: 992px) {

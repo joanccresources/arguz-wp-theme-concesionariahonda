@@ -1,4 +1,36 @@
 [id*="home-"] {
+  &.home-hero-slide {
+    $p: "home-hero-slide";
+    .#{$p}__carrousel {
+      .swiper-slide-image {
+        height: 686px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .elementor-image-carousel-wrapper {
+        padding-bottom: 0;
+      }
+
+      .swiper-pagination {
+        // position: absolute;
+        // left: 0;
+        // bottom: 0;
+        padding-bottom: 30px;
+      }
+      .swiper-pagination-bullet {
+        width: 16px;
+        height: 16px;
+        background: $rojo-sorsa-02;
+        // opacity: .85;
+        &-active {
+          // color: $rojo-sorsa-02;
+          // opacity: 1;
+        }
+      }
+    }
+  }
+
   &.home-hero {
     img.swiper-slide-image {
       @media (max-width: 767px) {
