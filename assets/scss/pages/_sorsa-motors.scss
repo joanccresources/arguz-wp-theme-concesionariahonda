@@ -19,6 +19,18 @@
           object-fit: cover;
           object-position: top left;
         }
+        @media (max-width: 767px) {
+          display: none !important;
+        }
+      }
+      &__body {
+        @media (max-width: 1199px) {
+          padding-left: 25px;
+        }
+        @media (max-width: 767px) {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
       }
     }
     // @include m(1024) {
