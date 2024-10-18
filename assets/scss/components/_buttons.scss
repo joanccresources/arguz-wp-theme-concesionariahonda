@@ -4,6 +4,9 @@
     font-size: 18px;
     padding-block: 18px;
     padding-inline: 30px;
+    span {
+      font-size: inherit;
+    }
   }
   &--main {
     a {
