@@ -7,11 +7,14 @@
     span {
       font-size: inherit;
     }
+    &:hover {
+      background-color: darken(#000, 25%);
+    }
   }
   &--main {
     a {
       font-weight: 700;
-      background-color: #ff0000;
+      background-color: #ff0000; 
       color: #fff;
       font-size: 18px;
       padding-block: 18px;
