@@ -15,3 +15,20 @@
     @include btn-motors($rojo-sorsa-02, $rojo-sorsa-02, #fff);
   }
 }
+
+// .container-bootstrap {
+// .elementor-section {
+//   > .elementor-container {
+//     @media (min-width: 1400px) {
+//       max-width: 1320px !important;
+//     }
+//   }
+// }
+// Container
+.elementor-section.elementor-section-boxed {
+  > .elementor-container {
+    @media (min-width: 1400px) {
+      max-width: 1320px;
+    }
+  }
+}

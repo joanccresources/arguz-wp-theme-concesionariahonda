@@ -1,15 +1,29 @@
 [id*="motors-"] {
   &.motors-main {
     /* Permalink - use to edit and share this gradient. Enlace permanente - úsalo para editar y compartir este gradiente: https://colorzilla.com/gradient-editor/#ff0000+30,ffffff+30 */
-
+    background-color: #1a1a1aff;
     .card-motors-main {
       > .elementor-container {
         column-gap: 30px;
       }
+      &__img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        .elementor-widget-container {
+          height: 100%;
+        }
+        img {
+          height: 100%;
+          object-fit: cover;
+          object-position: top left;
+        }
+      }
     }
-    @include m(1024) {
-      background: linear-gradient(to right, #ff0000 30%, #ffffff 30%);
-    }
+    // @include m(1024) {
+    //   background: linear-gradient(to right, #ff0000 30%, #ffffff 30%);
+    // }
   }
 
   &.motors-mision-vision {
