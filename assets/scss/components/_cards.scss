@@ -32,14 +32,36 @@
     padding: 30px;
   }
   &__figure {
-    display: block;
+    display: block !important;
+    width: 100%;
+    @media (max-width: 767px) {
+      padding-inline: 10px;
+    }
   }
   &__img {
+    border-radius: 65px !important;
+    max-height: 436px;
+    object-fit: cover;
+    width: 100%;
+    @media (max-width: 1399px) {
+      max-height: 375px;
+    }
+    @media (max-width: 1199px) {
+      max-height: 277px;
+    }
+    @media (max-width: 1199px) {
+      max-height: 215px;
+    }
   }
   &__title {
+    max-width: 300px;
     a {
+      font-family: "Rajdhani", serif;
+      font-weight: 700;
+      font-style: normal;
+
       color: black !important;
-      font-size: 30px;
+      font-size: 40px;
       text-decoration: none !important;
       text-transform: uppercase;
       line-height: 1.05;
@@ -47,21 +69,29 @@
         font-size: inherit;
       }
       @media (min-width: 768px) {
-        font-size: 38px;
+        font-size: 52px;
       }
+    }
+    @media (max-width: 767px) {
+      margin-bottom: 4px !important;
     }
   }
   &__description {
     .list-puntos {
       padding-left: 0;
       li {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        // font-size: 32px;
+        // font-size: 20px;
+        // font-weight: 500;
         list-style: none;
         display: flex;
-        // font-size: 22px;
-        font-size: 20px;
-        font-weight: 500;
         line-height: 1.5;
         color: $gris-sorsa-03;
+        //
+        font-size: 24px;
         &::before {
           font-family: FontAwesome;
           font-weight: 900;
@@ -69,7 +99,7 @@
           color: $azul-sorsa-02;
         }
         @media (min-width: 768px) {
-          font-size: 24px;
+          font-size: 40px;
         }
       }
       .address {
@@ -81,6 +111,9 @@
         &::before {
           content: "\f095";
         }
+      }
+      @media (max-width: 767px) {
+        margin-top: 0;
       }
     }
   }

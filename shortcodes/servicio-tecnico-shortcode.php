@@ -30,8 +30,13 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
 
     // Verifica si hay posts
     if ($query->have_posts()):
+      $contador = 0;
+
       while ($query->have_posts()):
         $query->the_post();
+        $contador++;
+        $is_par = $contador % 2 == 0;
+        $is_multiple =  $contador > 1;
 
         $post_id = get_the_ID();
 
@@ -47,7 +52,6 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
             $title = wp_kses_post('<span class="txt-rojo-02">' . $atts['title']) . '</span> ' . $title; // Si el título solo tiene una parte
           }
         } else {
-          // $title = esc_html($title); // Si no se proporciona un título, usar el título original
           $words = explode(' ', $title, 2);
           $first_word = $words[0];
           $rest = $words[1] ?? '';
@@ -62,20 +66,14 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
         // Genera el HTML con los datos obtenidos
     ?>
         <div class="card-tienda wow fadeIn slow" data-wow-delay="0.2s">
-          <div class="row justify-content-between align-items-center">
-            <div class="col-md-6">
-              <a
-                target="_blank"
-                href="<?= esc_url($url_mapa); ?>"
-                class="card-tienda__figure">
-                <img decoding="async" src="<?= esc_url($featured_img_url); ?>" alt="" class="card-tienda__img" />
-              </a>
-            </div>
-            <div class="col-md-6">
+          <div class="row justify-content-between align-items-center <?= $is_multiple ? 'mt-0 mt-md-2 mt-xl-5' : '' ?>">
+            <div class="col-md-6 col-xl-5 <?= $is_par ? 'order-md-2' : 'order-md-1' ?>">
               <div class="card-tienda__info">
+                <!--
                 <div class="card-tienda__logo-parent">
                   <img src="https://concesionariahonda.sorsa.pe/wp-content/uploads/2024/09/logo-sorsa-main.svg" alt="Logo" class="card-tienda__logo">
                 </div>
+                -->
                 <h6 class="card-tienda__title">
                   <a href="<?= esc_url($url_mapa); ?>" target="_blank"><?= wp_kses_post($title); ?></a>
                 </h6>
@@ -87,11 +85,21 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
                   <div class="btn-negro-blanco">
                     <a href="<?= esc_url($url_mapa); ?>" target="_blank">VER EN EL MAPA</a>
                   </div>
+                  <!--
                   <div class="btn-rojo-blanco">
                     <a href="https://concesionariahonda.sorsa.pe/agenda-tu-cita/">AGENDA TU CITA</a>
                   </div>
+                  -->
                 </div>
               </div>
+            </div>
+            <div class="col-md-6 col-xl-7 <?= $is_par ? 'order-md-1' : 'order-md-2' ?>">
+              <a
+                target="_blank"
+                href="<?= esc_url($url_mapa); ?>"
+                class="card-tienda__figure">
+                <img decoding="async" src="<?= esc_url($featured_img_url); ?>" alt="" class="card-tienda__img" />
+              </a>
             </div>
           </div>
         </div>

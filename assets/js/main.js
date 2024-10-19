@@ -115,7 +115,7 @@
     const container = document.querySelector("body");
     const html = `
       <div class="whatsapp-container">
-        <a class="cta-wsp" href="#0">          
+        <a class="cta-wsp" href="https://wa.me/51954691632?text=¡Hola," target="_blank">
           <div class="cta-wsp__content shadow-lg">
             <span class="cta-wsp__title">¿TIENES UNA DUDA?</span>
             <span class="cta-wsp__txt">Escríbenos</span>
