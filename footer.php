@@ -13,6 +13,13 @@ eura_footer_back_to_top();
 wp_footer();
 ?>
 
+<?php
+$settings = pods('ajustes_del_tema');
+$footer_col1 = $settings->field('footer_enlaces_columna_1');
+$footer_col2 = $settings->field('footer_enlaces_columna_2');
+$footer_copyright = $settings->field('footer_copyright');
+?>
+
 <footer class="footer" id="footer">
   <div class="container-fluid">
     <div class="container">
@@ -25,31 +32,15 @@ wp_footer();
           </figure>
           <p class="text-white">Somos un grupo empresarial familiar con casi 30 años en el sector automotriz, comprometidos con el desarrollo sotenible.</p>
         </div>
-        <div class="col-md-3">
-          <ul class="list-slugs">
-            <li class="list-slugs__item">
-              <a href="https://concesionariahonda.sorsa.pe/sorsa-motors/" class="list-slugs__link">Cultura SORSA</a>
-            </li>            
-            <li class="list-slugs__item">
-              <a href="#0" class="list-slugs__link">Motos Honda</a>
-            </li>
-            <li class="list-slugs__item">
-              <a href="#0" class="list-slugs__link">Motokar Honda</a>
-            </li>
-          </ul>
+        <div class="col-md-3 col-slugs">
+          <?php if ($footer_col1): ?>
+            <?= wp_kses_post($footer_col1) ?>
+          <?php endif; ?>
         </div>
-        <div class="col-md-3">
-          <ul class="list-slugs">
-            <li class="list-slugs__item">
-              <a href="#0" class="list-slugs__link">Encuentra tu repuesto</a>
-            </li>
-            <li class="list-slugs__item">
-              <a href="#0" class="list-slugs__link">Servicio técnico automotriz</a>
-            </li>
-            <li class="list-slugs__item">
-              <a href="#0" class="list-slugs__link">Comunidad Motera</a>
-            </li>
-          </ul>
+        <div class="col-md-3 col-slugs">
+          <?php if ($footer_col2): ?>
+            <?= wp_kses_post($footer_col2) ?>
+          <?php endif; ?>
         </div>
 
         <div class="col-md-3">
@@ -69,7 +60,11 @@ wp_footer();
     <div class="container">
       <div class="row">
         <div class="col-12 text-start">
-          <p class="text-white">Copyright <?= date("Y") ?> Sorsa Motors. Todos los derechos reservados</p>
+          <?php if ($footer_copyright): ?>
+            <?= wp_kses_post($footer_copyright) ?>
+          <?php else: ?>
+            <p class="text-white">Copyright <?= date("Y") ?> Sorsa Motors. Todos los derechos reservados</p>
+          <?php endif; ?>
         </div>
       </div>
     </div>

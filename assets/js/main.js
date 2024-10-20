@@ -89,23 +89,42 @@
     const html = `
       <div id="top-header" class="top-header">
         <ul class="top-list-rrss">
+          ${
+            settingsTheme.facebook
+              ? `
+            <li class="top-list-rrss__item">
+              <a href="${settingsTheme.facebook}" target="_blank" class="top-list-rrss__link">
+                <i class="fa fa-facebook top-list-rrss__icon" aria-hidden="true"></i>
+              </a>            
+            </li>
+          `
+              : ""
+          }
+          ${
+            settingsTheme.instagram
+              ? `
           <li class="top-list-rrss__item">
-            <a href="https://www.facebook.com/SorsaMotors" target="_blank" class="top-list-rrss__link">
-              <i class="fa fa-facebook top-list-rrss__icon" aria-hidden="true"></i>
-            </a>            
-          </li>
-          <li class="top-list-rrss__item">
-            <a href="https://www.instagram.com/sorsamotors" target="_blank" class="top-list-rrss__link">
+            <a href="${settingsTheme.instagram}" target="_blank" class="top-list-rrss__link">
               <i class="fa fa-instagram top-list-rrss__icon" aria-hidden="true"></i>
             </a>
           </li>
+          `
+              : ""
+          }
         </ul>
+        ${
+          settingsTheme.btn_reserva
+            ? `
         <div>
-          <a class="btn-agenda-cita" href="https://concesionariahonda.sorsa.pe/agenda-tu-cita/">
+          <a class="btn-agenda-cita" href="${settingsTheme.btn_reserva}">
             <img src="${urlAssets}/img/top-moto-logo.png" width="59" height="42" class="btn-agenda-cita__img" />
             <span class="btn-agenda-cita__txt">AGENDA TU CITA</span>
           </a>
         </div>
+        `
+            : ""
+        }        
+
       </div>
     `;
     container.insertAdjacentHTML("beforebegin", html);
@@ -113,9 +132,10 @@
 
   const addCTAWhatsapp = () => {
     const container = document.querySelector("body");
+    if (!settingsTheme.whatsapp) return;
     const html = `
       <div class="whatsapp-container">
-        <a class="cta-wsp" href="https://wa.me/51954691632?text=¡Hola," target="_blank">
+        <a class="cta-wsp" href="${settingsTheme.whatsapp}" target="_blank">
           <div class="cta-wsp__content shadow-lg">
             <span class="cta-wsp__title">¿TIENES UNA DUDA?</span>
             <span class="cta-wsp__txt">Escríbenos</span>
@@ -128,6 +148,8 @@
   };
 
   const initDomReady = () => {
+    console.log({ settingsTheme });
+
     addButtonInHeader();
     changeFormContactFooter();
     changePlaceholderSearch();

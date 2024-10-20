@@ -20,6 +20,26 @@
     }
   }
 
+  .col-slugs {
+    ul,
+    ol {
+      padding-left: 0;
+      list-style: none;
+      margin-top: 20px;
+      li {
+        margin-top: 3px;
+        a {
+          font-size: 18px;
+          color: white;
+        }
+      }
+      @media (min-width: 992px) {
+        padding-left: 32px;
+        margin-top: 30px;
+      }
+    }
+  }
+
   .form-footer-contact {
     &__entrar {
       p {

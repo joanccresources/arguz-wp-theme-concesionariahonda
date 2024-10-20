@@ -1,18 +1,88 @@
 #primary {
   .concesionaria-hero {
+    .container {
+      @media (min-width: 1600px) {
+        max-width: 1530px;
+      }
+    }
+    .col-img-hero {
+      @media (max-width: 767px) {
+        padding-inline: 0 !important;
+      }
+    }
     &__img {
       width: 100%;
       object-fit: cover;
-      height: 352px;
+      height: 152px;
       @media (min-width: 768px) {
         height: auto;
       }
     }
   }
 
+  .modelos-shop-sorsa {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    list-style: none;
+    column-gap: 8px;
+    @media (max-width: 767px) {
+      column-gap: 12px;
+    }
+  }
+  .card-modelo-shop {
+    &__img {
+      width: 152px;
+      height: 152px;
+      object-fit: cover;
+      border-radius: 50%;
+      @media (max-width: 1399px) {
+        width: 112px;
+        height: 112px;
+      }
+      @media (max-width: 1199px) {
+        width: 92px;
+        height: 92px;
+      }
+    }
+    &__title {
+      font-family: "Rajdhani", serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 21px;
+      text-align: center;
+      color: #000000ff;
+    }
+  }
+  // card-modelo-shop__title
+
   // Se oculto opciones de filtro
+
+  .clean-filters {
+    &__link {
+      font-size: 14px;
+      font-family: "Rajdhani", serif;
+      font-weight: 600;
+      font-style: normal;
+      background-color: black;
+      color: #fff;
+      padding: 3px 15px;
+      display: inline-block;
+    }
+  }
+
   #secondary {
+    padding-top: 10px;
     border: none;
+    padding-left: 0;
+
+    h3.widget-title {
+      font-weight: 700;
+      font-family: "Rajdhani", serif;
+      font-style: normal;
+    }
     .product-categories {
       .cat-item {
         &.current-cat {
@@ -27,6 +97,9 @@
 
     > .widget_product_search {
       margin-bottom: 25px;
+      h3 {
+        margin-bottom: 5px;
+      }
     }
 
     input.search-field {
@@ -177,6 +250,9 @@
 
   .special-products-area {
     .title-motors {
+      font-family: "Rajdhani", serif;
+      font-weight: 700;
+      font-style: normal;
       h2 {
         @media (max-width: 767px) {
           width: 100%;
@@ -284,6 +360,41 @@
     // margin-right: 20px !important;
     display: none !important;
   }
+
+  // precios
+  .card-shop-main {
+    &__price {
+      font-size: 18px;
+      color: $rojo-sorsa-02;
+      flex: 0 0 100%;
+      bdi,
+      bdi span {
+        font-family: "Rajdhani", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+    }
+  }
+
+  // fuentes
+  .product-card {
+    .ratings {
+      a {
+        font-family: "Rajdhani", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+    }
+    h3 a {
+      font-family: "Rajdhani", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+  }
+
+  .new-filters {
+    // padding-left: 25px;
+  }
 }
 
 body.woo-slug-shop {
@@ -336,6 +447,12 @@ body.woo-slug-shop {
 }
 
 body.woo-slug-product {
+  // ocultar breadcrumb y filtros
+  .breadcrumb,
+  .clean-filters {
+    display: none !important;
+  }
+
   .products_details.ptb-150 {
     padding-block: 30px;
     @media (min-width: 768px) {

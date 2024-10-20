@@ -2,9 +2,54 @@
 
 /*** Editor clasico ***/
 add_filter('use_block_editor_for_post', '__return_false', 10);
+
+/*** Agregar estilos al editor WP ***/
+/*
+add_action('admin_init', 'custom_editor_styles_inline');
+function custom_editor_styles_inline()
+{
+  // Estilos personalizados para el editor
+  $custom_css = "
+      body#tinymce.wp-editor {
+          background-color: #333; 
+          color: #fff;
+      }
+      body#tinymce.wp-editor p {
+          color: #fff;
+      }
+  ";
+  // Agregar el estilo inline en el editor
+  add_editor_style(); // Esto asegura que cargue los estilos del editor
+  wp_add_inline_style('editor-buttons', $custom_css);
+}
+*/
+
+/*** Retorna un array con nuestros campos creados con PODS sobre ajustes_del_tema ***/
+function get_pods_variables()
+{
+  $settings = pods('ajustes_del_tema');
+  return array(
+    // TOP HEADER
+    'facebook'    => $settings->field('top_header_facebook'),
+    'instagram'   => $settings->field('top_header_instagram'),
+    'btn_reserva'     => $settings->field('top_header_agenda_tu_cita'),
+    // BOTON FLOTANTE
+    'whatsapp'     => $settings->field('flotante_whatsapp'),
+    // FOOTER
+    // 'footer_col1'     => $settings->field('footer_enlaces_columna_1'),
+    // 'footer_col2'     => $settings->field('footer_enlaces_columna_2'),
+    // 'footer_copyright'     => $settings->field('footer_copyright'),
+  );
+}
+
 function eura_enqueue_style()
 {
   wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=' . time(), array(), null, true);
+
+  // Obtener las variables desde Pods
+  $variables_pods = get_pods_variables();
+  wp_localize_script('main-script', 'settingsTheme', $variables_pods);
+
 
   if (is_page("home")) {
     wp_enqueue_script('home-script', get_stylesheet_directory_uri() . '/assets/js/home.js?v=' . time(), array(), null, true);
@@ -39,6 +84,13 @@ function divi_engine_wc_translations($translated)
   return $translated;
 }
 add_filter('gettext', 'divi_engine_wc_translations', 20);
+
+/*** quitar decimales si no los tiene en WooCommerce ***/
+add_filter('woocommerce_price_trim_zeros', 'remover_decimales_woocommerce', 10, 1);
+function remover_decimales_woocommerce($trim)
+{
+  return true;
+}
 
 
 // Shortcodes

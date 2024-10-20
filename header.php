@@ -29,12 +29,6 @@
   if (is_shop() || is_product_category() || is_product()) {
     echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/shop.css?v=' . time() . '">';
   }
-
-  // Estilos para entradas individuales
-  // if ((is_single() && get_post_type() == 'post') || is_category() || is_tag() || is_search()) {
-  // if (is_single() && get_post_type() == 'post') {    
-  //   echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/blog.css?v=' . time() . '">';
-  // }
   ?>
 </head>
 

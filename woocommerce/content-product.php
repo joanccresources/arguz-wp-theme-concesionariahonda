@@ -88,6 +88,8 @@ if (empty($product) || ! $product->is_visible()) {
         <!-- <h6 class="mb-0 fw-bold"> -->
         <?php /*woocommerce_template_loop_price();*/ ?>
         <!-- </h6> -->
+         
+        <h6 class="mb-0 fw-bold card-shop-main__price"><?php woocommerce_template_loop_price(); ?></h6>
         <!-- Precio oculto -->
       </div>
     </div>

@@ -91,67 +91,81 @@ endif;
   </div>
 <?php endif; ?>
 
-<!-- MOSTRAR IMAGEN DESTACADA DE SHOP -->
+
+<!-- MOSTRAR IMAGEN DESTACADA DE SHOP V1 -->
 <?php
 // Obtener el ID de la página Shop
 $shop_page_id = get_option('woocommerce_shop_page_id');
 // Verificar si la página Shop tiene una imagen destacada
 echo '<div class="concesionaria-hero" id="concesionaria-hero">';
-echo '<div class="concesionaria-hero__figure">';
-if ($shop_page_id && has_post_thumbnail($shop_page_id)) {
-  echo get_the_post_thumbnail($shop_page_id, 'full', array('class' => 'concesionaria-hero__img'));
-} else {
-  echo '<img fetchpriority="high" width="1368" height="525" src="' . get_site_url() . '/wp-content/uploads/2024/10/0.png" class="concesionaria-hero__img" alt="" decoding="async" srcset="' . get_site_url() . '/wp-content/uploads/2024/10/0.png 1368w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-300x115.png 300w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-1024x393.png 1024w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-768x295.png 768w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-530x203.png 530w" sizes="(max-width: 1368px) 100vw, 1368px">';
-}
-echo '</div>';
-echo '</div>';
-?>
-<!-- MOSTRAR MODELOS -->
-<?php
-$included_slugs = array('honda-pistera', 'todo-terreno', 'scooters-honda');
+echo '  <div class="container">';
+echo '    <div class="row align-items-md-center">';
+echo '      <div class="order-2 order-lg-1 col-lg-4 mt-3 mt-lg-0">';
+
+$included_slugs = array('moto', 'motokar', 'alta-gama');
 $product_categories = get_terms(array(
   'taxonomy' => 'product_cat',
   'slug'       => $included_slugs,
   'hide_empty' => false,
+  'meta_key' => 'orden_modelo',
+  'orderby' => 'meta_value_num',
+  'order' => 'ASC',
 ));
 if (! empty($product_categories) && ! is_wp_error($product_categories)) {
-  echo '<div class="container">';
-  echo '<div class="row">';
-  echo '<div class="col-12">';
-  echo '<div class="concesionaria-modelo__container">';
+  echo '        <ul class="modelos-shop-sorsa">';
   foreach ($product_categories as $category) {
     $title = esc_html($category->name);
     $category_link = esc_url(get_term_link($category));
     $miniatura_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-
-    echo '<a class="card-concesionaria-modelo" href="' . $category_link . '">';
-    echo '<div class="card-concesionaria-modelo__figure">';
+    echo '        <li class="card-modelo-shop">';
+    echo '          <a class="card-modelo-shop__link" href="' . $category_link . '">';
+    echo '            <div class="card-modelo-shop__body">';
     if ($miniatura_id) {
       $miniatura_url = wp_get_attachment_url($miniatura_id);
       if ($miniatura_url) {
-        echo '<img src="' . esc_url($miniatura_url) . '" alt="' . esc_attr($category->name) . '" class="card-concesionaria-modelo__img"/>';
+        echo '              <div class="card-modelo-shop__figure">';
+        echo '                <img src="' . esc_url($miniatura_url) . '" alt="' . esc_attr($category->name) . '" class="card-modelo-shop__img"/>';
+        echo '              </div>';
       }
     }
-    echo '</div>';
-    echo '<h3 class="card-concesionaria-modelo__title">' . $title . '</h3>';
-    echo '</a>'; // .card-concesionaria-modelo
+    echo '              <div class="mt-1">';
+    echo '                <p class="card-modelo-shop__title">' . $title . '</p>';
+    echo '              </div>';
+
+    echo '            </div>';
+    echo '          </a>';
+    echo '        </li>';
   }
-  echo '</div>'; // .concesionaria-modelo__container
-  echo '</div>'; // .col-12
-  echo '</div>'; // .row
-  echo '</div>'; // .container
+  echo '        </ul>';
 } else {
   echo 'No hay categorías de productos disponibles.';
 }
+
+echo '      </div>';
+echo '      <div class="order-1 order-lg-2 col-lg-8 col-img-hero">';
+echo '        <div class="concesionaria-hero__figure">';
+if ($shop_page_id && has_post_thumbnail($shop_page_id)) {
+  echo get_the_post_thumbnail($shop_page_id, 'full', array('class' => 'concesionaria-hero__img'));
+} else {
+  echo '    <img fetchpriority="high" width="1368" height="525" src="' . get_site_url() . '/wp-content/uploads/2024/10/0.png" class="concesionaria-hero__img" alt="" decoding="async" srcset="' . get_site_url() . '/wp-content/uploads/2024/10/0.png 1368w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-300x115.png 300w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-1024x393.png 1024w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-768x295.png 768w, ' . get_site_url() . '/wp-content/uploads/2024/10/0-530x203.png 530w" sizes="(max-width: 1368px) 100vw, 1368px">';
+}
+echo '        </div>'; /*.concesionaria-hero__figure*/
+echo '      </div>'; /*.col-lg-8*/
+echo '    </div>'; /*.row*/
+echo '  </div>'; /*.container*/
+echo '</div>'; /*.concesionaria-hero*/
 ?>
 
 <!-- <div class="special-products-area ptb-150"> -->
-<div class="special-products-area py-4 py-md-5">
+<div class="special-products-area py-4 py-md-5" id="main-content-shop">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
+    <div class="row">    
+      <div class="offset-md-0 col-md-12 offset-lg-3 col-lg-9 mt-4 mt-lg-0">
         <div class="title-motors text-center mb-3">
+          <!--
           <h2><span class="first">NUEVOS</span> MODELOS <?= date("Y") ?></h2>
+          -->
+          <h2><span class="first">ELIGE TU</span> MOTO IDEAL</h2>
         </div>
       </div>
     </div>
