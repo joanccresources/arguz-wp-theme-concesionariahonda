@@ -46,10 +46,12 @@ if (! is_active_sidebar($eura_sidebar_class)) {
       } else { ?>
           <div id="secondary" class="title sidebar sidebar-widgets widget-area">
           <?php } ?>
+
           <!-- <sorsa> -->
           <div class="test-filter d-none">
             <h3 class="mb-3">Filtrar por Tipo de Vehículo</h3>
             <?php
+            /*
             // Obtenemos los términos de la taxonomía 'tipo_de_vehiculo'
             $tipos_de_vehiculo = get_terms(array(
               'taxonomy' => 'tipo_de_vehiculo',
@@ -57,20 +59,20 @@ if (! is_active_sidebar($eura_sidebar_class)) {
             ));
 
             // Mostramos los checkbox para cada término
-            if (! empty($tipos_de_vehiculo) && ! is_wp_error($tipos_de_vehiculo)): ?>
-              <ul class="woocommerce-widget-layered-nav-list">
-                <?php foreach ($tipos_de_vehiculo as $tipo) { ?>
-                  <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term">
-                    <a
-                      data-tipo-de-vehiculo="<?= esc_attr($tipo->slug) ?>"
-                      rel="nofollow"
-                      href="<?= home_url() ?>/shop?filter_tipo_de_vehiculo=<?= esc_attr($tipo->slug) ?>">
-                      <?= esc_html($tipo->name) ?>
-                    </a>
-                  </li>
-                <?php } ?>
-              </ul>
-            <?php endif; ?>
+            if (! empty($tipos_de_vehiculo) && ! is_wp_error($tipos_de_vehiculo)):*/ ?>
+            <ul class="woocommerce-widget-layered-nav-list">
+              <?php /*foreach ($tipos_de_vehiculo as $tipo) { */ ?>
+              <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term">
+                <a
+                  data-tipo-de-vehiculo="<?php /* esc_attr($tipo->slug) */ ?>"
+                  rel="nofollow"
+                  href="<?php /* home_url() */ ?>/shop?filter_tipo_de_vehiculo=<?php /*esc_attr($tipo->slug)*/ ?>">
+                  <?php /*esc_html($tipo->name)*/ ?>
+                </a>
+              </li>
+              <?php /*}*/ ?>
+            </ul>
+            <?php /*endif;*/ ?>
           </div>
           <script>
             (() => {

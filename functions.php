@@ -64,6 +64,9 @@ function eura_enqueue_style()
   if (is_product()) {
     wp_enqueue_script('product-detail-script', get_stylesheet_directory_uri() . '/assets/js/product-detail.js?v=' . time(), array(), null, true);
   }
+  if (is_shop() || is_product_category()) {
+    wp_enqueue_script('shop-script', get_stylesheet_directory_uri() . '/assets/js/shop.js?v=' . time(), array(), null, true);
+  }
 
   wp_enqueue_style("parent-style", get_parent_theme_file_uri("/style.css"));
 }
@@ -78,24 +81,27 @@ add_action('wp_enqueue_scripts', 'eura_enqueue_style');
   ?filter_tipo_de_vehiculo=alta-gama,motokar
   ?filter_tipo_de_vehiculo=alta-gama,motokar,moto
 */
-add_action( 'pre_get_posts', 'filtrar_productos_por_tipo_de_vehiculo' );
-function filtrar_productos_por_tipo_de_vehiculo( $query ) {
-    if ( ! is_admin() && $query->is_main_query() && ( is_shop() || is_product_taxonomy() ) ) {
-        if ( isset( $_GET['filter_tipo_de_vehiculo'] ) && ! empty( $_GET['filter_tipo_de_vehiculo'] ) ) {
-            $tipo_de_vehiculo_slugs = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_tipo_de_vehiculo'] ) );
-            // Añadimos la tax_query a la consulta
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'tipo_de_vehiculo',
-                    'field'    => 'slug',
-                    'terms'    => $tipo_de_vehiculo_slugs,
-                    'operator' => 'IN',
-                ),
-            );
-            $query->set( 'tax_query', $tax_query );
-        }
+/*
+add_action('pre_get_posts', 'filtrar_productos_por_tipo_de_vehiculo');
+function filtrar_productos_por_tipo_de_vehiculo($query)
+{
+  if (! is_admin() && $query->is_main_query() && (is_shop() || is_product_taxonomy())) {
+    if (isset($_GET['filter_tipo_de_vehiculo']) && ! empty($_GET['filter_tipo_de_vehiculo'])) {
+      $tipo_de_vehiculo_slugs = array_map('sanitize_text_field', explode(',', $_GET['filter_tipo_de_vehiculo']));
+      // Añadimos la tax_query a la consulta
+      $tax_query = array(
+        array(
+          'taxonomy' => 'tipo_de_vehiculo',
+          'field'    => 'slug',
+          'terms'    => $tipo_de_vehiculo_slugs,
+          'operator' => 'IN',
+        ),
+      );
+      $query->set('tax_query', $tax_query);
     }
+  }
 }
+*/
 
 
 /*** Cambiar el texto de WooCommerce ***/

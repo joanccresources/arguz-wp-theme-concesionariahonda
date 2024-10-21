@@ -270,7 +270,7 @@ echo '</div>'; /*.concesionaria-hero*/
                     $banner_footer_url = wp_get_attachment_url($banner_footer_id);
                     if ($banner_footer_url):
                     ?>
-                      <div class="banner-footer" id="banner-footer">
+                      <div class="banner-footer d-none" id="banner-footer">
                         <div class="banner-footer__figure">
                           <img src="<?= esc_url($banner_footer_url) ?>" alt="Banner Footer" class="banner-footer__img">
                         </div>

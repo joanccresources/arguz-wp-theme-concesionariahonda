@@ -333,9 +333,13 @@ function shortcode_home_mas_vendidos($atts)
       echo '      </figure>';
       echo '      <div class="">';
       if ($terms && ! is_wp_error($terms)) {
+        echo '<p class="card-mas-vendidos__category">';
+        $categories = array(); // Array para almacenar los nombres de las categorías
         foreach ($terms as $term) {
-          echo '<p class="card-mas-vendidos__category">' . esc_html($term->name) . '</p>'; // Mostrar el nombre de la categoría
+          $categories[] = esc_html($term->name); // Agregar cada nombre de categoría al array
         }
+        echo implode(', ', $categories); // Unir los nombres con comas
+        echo '</p>';
       }
       echo '      <p class="card-mas-vendidos__title">' . get_the_title() . '</p>';
       echo '      </div>';
