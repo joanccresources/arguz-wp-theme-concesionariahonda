@@ -69,8 +69,37 @@ function eura_enqueue_style()
 }
 add_action('wp_enqueue_scripts', 'eura_enqueue_style');
 
+// WOOCOMMERCE
+// Filtro para el taxonomy "tipo_de_vehiculo"
+/* 
+  URLS:
+  ?filter_tipo_de_vehiculo=motokar
+  ?filter_tipo_de_vehiculo=motokar,moto
+  ?filter_tipo_de_vehiculo=alta-gama,motokar
+  ?filter_tipo_de_vehiculo=alta-gama,motokar,moto
+*/
+add_action( 'pre_get_posts', 'filtrar_productos_por_tipo_de_vehiculo' );
+function filtrar_productos_por_tipo_de_vehiculo( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && ( is_shop() || is_product_taxonomy() ) ) {
+        if ( isset( $_GET['filter_tipo_de_vehiculo'] ) && ! empty( $_GET['filter_tipo_de_vehiculo'] ) ) {
+            $tipo_de_vehiculo_slugs = array_map( 'sanitize_text_field', explode( ',', $_GET['filter_tipo_de_vehiculo'] ) );
+            // Añadimos la tax_query a la consulta
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'tipo_de_vehiculo',
+                    'field'    => 'slug',
+                    'terms'    => $tipo_de_vehiculo_slugs,
+                    'operator' => 'IN',
+                ),
+            );
+            $query->set( 'tax_query', $tax_query );
+        }
+    }
+}
+
 
 /*** Cambiar el texto de WooCommerce ***/
+add_filter('gettext', 'divi_engine_wc_translations', 20);
 function divi_engine_wc_translations($translated)
 {
   $text = array(
@@ -83,9 +112,8 @@ function divi_engine_wc_translations($translated)
   $translated = str_ireplace(array_keys($text),  $text,  $translated);
   return $translated;
 }
-add_filter('gettext', 'divi_engine_wc_translations', 20);
 
-/*** quitar decimales si no los tiene en WooCommerce ***/
+/*** Quitar decimales si no los tiene en WooCommerce ***/
 add_filter('woocommerce_price_trim_zeros', 'remover_decimales_woocommerce', 10, 1);
 function remover_decimales_woocommerce($trim)
 {
