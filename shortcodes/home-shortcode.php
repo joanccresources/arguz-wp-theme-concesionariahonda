@@ -97,6 +97,7 @@ function shortcode_home_modelos($atts)
 add_shortcode('home_modelos', 'shortcode_home_modelos');
 */
 
+/*
 // ¿QUE MODELOS HONDA BUSCAS?
 function shortcode_home_modelos($atts)
 {
@@ -105,8 +106,7 @@ function shortcode_home_modelos($atts)
   $included_slugs = array('moto', 'motokar', 'alta-gama');
   // Obtener categorías de productos
   $product_categories = get_terms(array(
-    'taxonomy' => 'product_cat',
-    // 'exclude' => $excluded_ids,
+    'taxonomy' => 'product_cat',    
     'slug'       => $included_slugs, // Solo incluir estas categorías
     'hide_empty' => false, // true para ocultar las categorías vacías
     'meta_key' => 'orden_modelo',
@@ -177,7 +177,56 @@ function shortcode_home_modelos($atts)
   return ob_get_clean();
 }
 add_shortcode('home_modelos', 'shortcode_home_modelos');
+*/
 
+// ¿QUE MODELOS HONDA BUSCAS?
+function shortcode_home_modelos($atts)
+{
+  ob_start();
+  $included_slugs = array('moto', 'motokar', 'alta-gama');
+  $product_categories = get_terms(array(
+    'taxonomy' => 'product_cat',
+    'slug'       => $included_slugs, // Solo incluir estas categorías
+    'hide_empty' => false, // true para ocultar las categorías vacías
+    'meta_key' => 'orden_modelo',
+    'orderby' => 'meta_value_num',
+    'order' => 'ASC',
+  ));
+
+  // Comprobar si hay categorías disponibles
+  if (! empty($product_categories) && ! is_wp_error($product_categories)) {
+    echo '<div class="short-home-modelos">';    
+    foreach ($product_categories as $category) {
+      $title = esc_html($category->name);      
+      // FALSE para obtener todas las imagenes como array
+      $galeria = get_term_meta($category->term_id, 'galeria', false); 
+
+      echo '<div class="content-modelos">';
+      echo '  <h3 class="content-modelos__title">' . $title . '</h3>';
+      if (! empty($galeria) && is_array($galeria)) {
+        echo '<div class="modelos-list">';
+        foreach ($galeria as $imagen_id) {
+          $imagen_url = wp_get_attachment_url($imagen_id);
+          if ($imagen_url) {
+            echo '<div class="modelos-list__item">';
+            echo '  <div class="modelos-list__link">';
+            echo '    <img src="' . esc_url($imagen_url) . '" alt="' . esc_attr($title) . '" class="modelos-list__img" />';
+            echo '  </div>';
+            echo '</div>';
+          }
+        }
+        echo '</div>'; // .modelos-list
+      }
+      echo '</div>'; // .content-modelos
+      wp_reset_postdata();
+    }
+    echo '</div>';  // .short-home-modelos
+  } else {
+    echo 'No hay categorías de productos disponibles.';
+  }
+  return ob_get_clean();
+}
+add_shortcode('home_modelos', 'shortcode_home_modelos');
 
 function shortcode_home_promocion($atts)
 {
