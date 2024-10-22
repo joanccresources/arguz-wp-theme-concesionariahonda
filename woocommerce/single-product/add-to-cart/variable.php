@@ -32,6 +32,7 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
 								<?php echo wc_attribute_label($attribute_name); ?>
 							</label>
 						</th>
+						<!-- colores -->
 						<td class="value col-12 list-<?= strtolower(wc_attribute_label($attribute_name)); ?>">
 							<?php
 							wc_dropdown_variation_attribute_options(

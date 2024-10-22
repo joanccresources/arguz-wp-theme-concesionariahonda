@@ -156,11 +156,11 @@ echo '  </div>'; /*.container*/
 echo '</div>'; /*.concesionaria-hero*/
 ?>
 
-<!-- <div class="special-products-area ptb-150"> -->
-<div class="special-products-area py-4 py-md-5" id="main-content-shop">
+<div class="special-products-area py-3 py-md-5" id="main-content-shop">
   <div class="container">
-    <div class="row">    
-      <div class="offset-md-0 col-md-12 offset-lg-3 col-lg-9 mt-4 mt-lg-0">
+    <!-- TITULO -->
+    <div class="row">
+      <div class="offset-md-0 col-md-12 offset-lg-3 col-lg-9 mt-0 mt-md-4 mt-lg-0">
         <div class="title-motors text-center mb-3">
           <!--
           <h2><span class="first">NUEVOS</span> MODELOS <?= date("Y") ?></h2>
@@ -169,6 +169,7 @@ echo '</div>'; /*.concesionaria-hero*/
         </div>
       </div>
     </div>
+    <!-- CONTENIDO -->
     <div class="row">
       <?php
       if (is_active_sidebar('shop')) {
@@ -188,7 +189,7 @@ echo '</div>'; /*.concesionaria-hero*/
                   <?php do_action('woocommerce_sidebar'); ?>
                   <!-- /shop -->
                   <!-- sorsa -->
-                  <div class="col-lg-9 col-md-12 mt-4 mt-lg-0">
+                  <div class="col-lg-9 col-md-12 mt-md-4 mt-lg-0">
                   <?php elseif ($product_sidebar == 'right-sidebar'): ?>
                     <div class="col-lg-8 col-md-12 asd_4">
                     <?php elseif ($product_sidebar == 'eura_product_no_sidebar'): ?>
@@ -213,14 +214,12 @@ echo '</div>'; /*.concesionaria-hero*/
                         if (wc_get_loop_prop('total')) {
                           while (have_posts()) {
                             the_post();
-
                             /**
                              * Hook: woocommerce_shop_loop.
                              *
                              * @hooked WC_Structured_Data::generate_product_data() - 10
                              */
                             do_action('woocommerce_shop_loop');
-
                             wc_get_template_part('content', 'product');
                           }
                         }
@@ -245,13 +244,11 @@ echo '</div>'; /*.concesionaria-hero*/
 
                       <?php
                       if (isset($_GET['shop'])) {
-                        if ($eura_shop_cat_sidebar == 'right') {
+                        if ($eura_shop_cat_sidebar == 'right')
                           do_action('woocommerce_sidebar');
-                        }
                       } else {
-                        if ($product_sidebar == 'right-sidebar') {
+                        if ($product_sidebar == 'right-sidebar')
                           do_action('woocommerce_sidebar');
-                        }
                       } ?>
                         </div>
                       </div>
@@ -264,13 +261,13 @@ echo '</div>'; /*.concesionaria-hero*/
                      */
                     do_action('woocommerce_after_main_content');
                     ?>
-                    <!--  -->
+                    <!-- BEFORE FOOTER  -->
                     <?php
                     $banner_footer_id = get_post_meta($shop_page_id, 'banner_footer', true);
                     $banner_footer_url = wp_get_attachment_url($banner_footer_id);
                     if ($banner_footer_url):
                     ?>
-                      <div class="banner-footer d-none" id="banner-footer">
+                      <div class="banner-footer" id="banner-footer">
                         <div class="banner-footer__figure">
                           <img src="<?= esc_url($banner_footer_url) ?>" alt="Banner Footer" class="banner-footer__img">
                         </div>

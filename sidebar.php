@@ -140,6 +140,86 @@ if (! is_active_sidebar($eura_sidebar_class)) {
           </script>
           <!-- </sorsa> -->
 
+          <!-- <SorsaShowColores> -->
+          <?php
+          $colores = get_terms(array(
+            'taxonomy' => 'pa_color',
+            'hide_empty' => true, // Solo muestra los colores con productos
+          ));
+
+          if (!empty($colores) && !is_wp_error($colores)) {
+            echo '<ul class="sidebar-colores d-flex align-items-center" id="sidebar-colores">';
+            foreach ($colores as $color) {
+              // Obtener el valor hexadecimal del campo personalizado
+              $color_hex = get_term_meta($color->term_id, 'color', true);
+              // Mostrar el nombre del color y un cuadrado con el color
+              echo '<li class="mb-0">';
+              echo '<a class="d-inline-flex d-none" data-name=' . $color->name  . '>';
+              if ($color_hex)
+                echo '<span class="shadow d-inline-block" style="background-color:' . esc_attr($color_hex) . ';"></span>';
+              echo '</a>';
+              echo '</li>';
+            }
+            echo '</ul>'; ?>
+            <script>
+              (() => {
+                const initDOMReady = () => {
+                  const container = document.querySelector(".widget_layered_nav .woocommerce-widget-layered-nav-list");
+                  const sidebarColores = document.querySelector("#sidebar-colores");
+                  if (!container || !sidebarColores) return;
+                  container.insertAdjacentElement("afterend", sidebarColores);
+
+                  const slugsFilters = container.querySelectorAll("a");
+                  // All colors
+                  const slugsSidebar = sidebarColores.querySelectorAll("a");
+
+                  // Recorremos los filtrados
+                  Array.from(slugsFilters).forEach(filter => {
+                    // Nuevos cuadros
+                    Array.from(slugsSidebar).forEach(sidebar => {
+                      if (filter.textContent.trim() === sidebar.getAttribute("data-name").trim()) {
+                        sidebar.setAttribute("href", filter.getAttribute("href") || "");
+                        // Todos estan ocultos en caso , pero como este item existe en los filtros le quitamos el d-none
+                        sidebar.classList.remove("d-none")
+                        if (filter.parentNode.classList.contains("woocommerce-widget-layered-nav-list__item--chosen")) {
+                          sidebar.classList.add("active");
+                        }
+                      }
+                    });
+                  })
+                }
+                document.addEventListener("DOMContentLoaded", () => {
+                  initDOMReady();
+                })
+              })();
+            </script>
+            <style>
+              .widget_layered_nav .woocommerce-widget-layered-nav-list {
+                display: none !important;
+              }
+
+              /* width:20px;height:20px; */
+              #sidebar-colores {
+                column-gap: 4px;
+                flex-wrap: wrap;
+              }
+
+              #sidebar-colores a span {
+                width: 39px;
+                height: 39px;
+                border-radius: 50%;
+              }
+
+              #sidebar-colores a.active span {
+                border: 2px solid white;
+                outline: 1px solid red;
+              }
+            </style>
+          <?php } ?>
+
+
+          <!-- </SorsaShowColores> -->
+
           <?php dynamic_sidebar($eura_sidebar_class); ?>
           </div>
           </div><!-- #secondary -->
