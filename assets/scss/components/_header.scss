@@ -21,6 +21,19 @@ body {
   .navbar-brand {
     &.logo {
       width: 199px;
+      // flex: 0 0 199px;
+      // flex-basis: 0;
+      // flex-grow: 1;
+      // max-width: 100%;
+      // @media (max-width: 767px) {
+      //   width: 179px;
+      // }
+      img {
+        @media (max-width: 767px) {
+          max-width: none;
+          width: 139px; 
+        }
+      }
     }
   }
   .btn-menu {
@@ -28,6 +41,9 @@ body {
     background: none;
     &__img {
       width: 30px;
+      @media (max-width: 767px) {
+        width: 55px;
+      }
     }
   }
   #menu-primary-menu {
@@ -52,9 +68,10 @@ body {
         font-family: "Russo One";
         font-weight: normal;
         font-style: normal;
-        br {
-          display: none;
-        }
+        // top header
+        // br {
+        //   display: none;
+        // }
       }
       &.current-menu-item {
         .nav-link {
@@ -68,6 +85,9 @@ body {
     @media (max-width: 1399px) {
       margin-left: 0;
     }
+    @media (max-width: 991px) {
+      display: none !important;
+    }
   }
 
   #top-header {
@@ -75,7 +95,7 @@ body {
     // }
     display: flex;
     column-gap: 14px;
-
+    align-items: center;
     .top-list-rrss {
       padding-left: 0;
       margin-bottom: 0;
@@ -104,7 +124,6 @@ body {
         }
       }
     }
-
     .btn-agenda-cita {
       background-color: $rojo-sorsa-02;
       display: flex;
@@ -114,7 +133,7 @@ body {
       border-radius: 30px;
       &__img {
         width: 49px;
-        @media (max-width: 767px) {
+        @media (max-width: 991px) {
           width: 39px;
         }
       }
@@ -123,9 +142,55 @@ body {
         color: #fff;
         font-family: "Russo One";
         font-weight: normal;
+        @media (max-width: 1399px) {
+          font-size: 18px;
+        }
+        @media (max-width: 1199px) {
+          display: none;
+        }
         @media (max-width: 767px) {
           font-size: 14px;
         }
+      }
+      &:hover {
+        background-color: darken($rojo-sorsa-02, 15%);
+      }
+      @media (max-width: 1199px) {
+        padding: 11.5px 25px;
+      }
+      @media (max-width: 991px) {
+        // padding: 6.5px 25px;
+        padding: 4.65px 25px;
+      }
+    }
+    @media (max-width: 991px) {
+      justify-content: flex-end;
+      margin-right: 12px;
+    }
+    @media (max-width: 767px) {
+      column-gap: 6px;
+    }
+  }
+
+  .top-header {
+    &__search {
+      border: none;
+      background-color: $rojo-sorsa-02;
+      border-radius: 30px;
+      padding: 9.5px 20px;
+      &:hover {
+        background-color: darken($rojo-sorsa-02, 15%);
+      }
+      @media (max-width: 991px) {
+        padding: 4.5px 15px;
+      }
+    }
+    &__search-img {
+      width: 27px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      @media (max-width: 991px) {
+        width: 22px;
       }
     }
   }
@@ -165,13 +230,23 @@ body {
 
   .navbar {
     > .container {
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
+      overflow: hidden;
+      justify-content: flex-start;
+      // background-color: #ff634738;
+      @media (max-width: 991px) {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
     }
   }
   .collapse.navbar-collapse {
-    flex: 0 0 100%;
+    // flex: 0 0 100%;
     margin-top: 15px;
     margin-bottom: 15px;
+    @media (max-width: 991px) {
+      display: block !important;
+    }
   }
 
   .container {
@@ -181,9 +256,15 @@ body {
       }
     }
     .others-option {
-      @media (min-width: 768px) and (max-width: 991px) {
+      @media (max-width: 991px) {
         order: 2;
       }
+    }
+  }
+
+  #top-header {
+    + .others-option {
+      display: none !important;
     }
   }
 

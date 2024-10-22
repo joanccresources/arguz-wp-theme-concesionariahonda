@@ -130,6 +130,47 @@
     container.insertAdjacentHTML("beforebegin", html);
   };
 
+  const addButtonsHeader = () => {
+    const container = document.querySelector("#menu-primary-menu");
+    if (!container) return;
+    const html = `
+      <div id="top-header" class="top-header">
+        ${
+          settingsTheme.btn_reserva
+            ? `
+        <div class="top-header__item">
+          <a class="btn-agenda-cita" href="${settingsTheme.btn_reserva}">
+            <img src="${urlAssets}/img/top-moto-logo.png" width="59" height="42" class="btn-agenda-cita__img" />
+            <span class="btn-agenda-cita__txt">AGENDA TU CITA</span>
+          </a>
+        </div>
+        `
+            : ""
+        }
+        <div class="top-header__item">
+          <button class="top-header__search" id="top-header-search">
+            <img src="${urlAssets}/img/icon-search.png" class="top-header__search-img" />
+          </button>
+        </div>
+
+      </div>
+    `;
+    container.insertAdjacentHTML("afterend", html);
+
+    const btnBuscador = document.querySelector("#top-header-search");
+    const modalBuscador = document.querySelector("#modal-buscador");
+
+    btnBuscador &&
+      btnBuscador.addEventListener("click", () => {
+        document.body.classList.add("active-search");
+      });
+
+    modalBuscador &&
+      modalBuscador.addEventListener("click", () => {
+        document.body.classList.remove("active-search");
+      });
+  };
+
   const addCTAWhatsapp = () => {
     const container = document.querySelector("body");
     if (!settingsTheme.whatsapp) return;
@@ -154,7 +195,8 @@
     changeFormContactFooter();
     changePlaceholderSearch();
 
-    addMenuTopInHeader();
+    // addMenuTopInHeader();
+    addButtonsHeader();
     addCTAWhatsapp();
   };
 

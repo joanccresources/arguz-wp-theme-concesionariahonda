@@ -70,6 +70,8 @@ $footer_copyright = $settings->field('footer_copyright');
     </div>
   </div>
 </footer>
+<div id="modal-buscador" class="modal-buscador">
+</div>
 </body>
 
 </html>
