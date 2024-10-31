@@ -197,7 +197,7 @@ function shortcode_home_modelos($atts)
   if (! empty($product_categories) && ! is_wp_error($product_categories)) {
     echo '<div class="short-home-modelos">';    
     foreach ($product_categories as $category) {
-      $title = esc_html($category->name);      
+      $title = esc_html($category->name);
       // FALSE para obtener todas las imagenes como array
       $galeria = get_term_meta($category->term_id, 'galeria', false); 
 

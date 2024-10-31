@@ -130,6 +130,10 @@ function remover_decimales_woocommerce($trim)
 // Shortcodes
 require_once get_stylesheet_directory() . '/shortcodes/load-shortcodes.php';
 
+// Functions
+// require_once get_stylesheet_directory() . '/inc/load-functions.php';
+require_once get_stylesheet_directory() . '/inc/load-functions.php';
+
 // Add clases
 function custom_body_class($classes)
 {
