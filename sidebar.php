@@ -11,7 +11,7 @@ if (class_exists('WooCommerce')) {
   $eura_sidebar_class = 'sidebar-1';
 }
 
-if (! is_active_sidebar($eura_sidebar_class)) {
+if (!is_active_sidebar($eura_sidebar_class)) {
   return;
 }
 ?>
@@ -29,21 +29,22 @@ if (! is_active_sidebar($eura_sidebar_class)) {
             / MOTOS Y MOTOKARS</span>
         </div>
         <div class="clean-filters">
-          <a class="clean-filters__link" href="https://concesionariahonda.sorsa.pe/shop/#main-content-shop" onclick="location.reload();">Limpiar todo</a>
+          <a class="clean-filters__link" href="https://concesionariahonda.sorsa.pe/shop/#main-content-shop"
+            onclick="location.reload();">Limpiar todo</a>
         </div>
       </div>
       <!-- sorsa -->
       <div id="secondary" class="shop-sidebar sidebar">
-      <?php
+        <?php
     } elseif (is_product()) { ?>
         <!-- sidebar blog -->
         <div id="secondary" class="sidebar shop-sidebar sidebar">
-        <?php
-      } else { ?>
-          <div id="secondary" class="title sidebar sidebar-widgets widget-area">
           <?php
-        }
-      } else { ?>
+    } else { ?>
+          <div id="secondary" class="title sidebar sidebar-widgets widget-area">
+            <?php
+    }
+  } else { ?>
           <div id="secondary" class="title sidebar sidebar-widgets widget-area">
           <?php } ?>
 
@@ -63,9 +64,7 @@ if (! is_active_sidebar($eura_sidebar_class)) {
             <ul class="woocommerce-widget-layered-nav-list">
               <?php /*foreach ($tipos_de_vehiculo as $tipo) { */ ?>
               <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term">
-                <a
-                  data-tipo-de-vehiculo="<?php /* esc_attr($tipo->slug) */ ?>"
-                  rel="nofollow"
+                <a data-tipo-de-vehiculo="<?php /* esc_attr($tipo->slug) */ ?>" rel="nofollow"
                   href="<?php /* home_url() */ ?>/shop?filter_tipo_de_vehiculo=<?php /*esc_attr($tipo->slug)*/ ?>">
                   <?php /*esc_html($tipo->name)*/ ?>
                 </a>
@@ -154,7 +153,7 @@ if (! is_active_sidebar($eura_sidebar_class)) {
               $color_hex = get_term_meta($color->term_id, 'color', true);
               // Mostrar el nombre del color y un cuadrado con el color
               echo '<li class="mb-0">';
-              echo '<a class="d-inline-flex d-none" data-name=' . $color->name  . '>';
+              echo '<a class="d-inline-flex d-none" data-name=' . $color->name . '>';
               if ($color_hex)
                 echo '<span class="shadow d-inline-block" style="background-color:' . esc_attr($color_hex) . ';"></span>';
               echo '</a>';
@@ -214,6 +213,11 @@ if (! is_active_sidebar($eura_sidebar_class)) {
                 border: 2px solid white;
                 outline: 1px solid red;
               }
+
+              /* Ocultando el filtrado por colores */
+              .widget_layered_nav:has(>#sidebar-colores) {
+                display: none !important;
+              }
             </style>
           <?php } ?>
 
@@ -221,5 +225,5 @@ if (! is_active_sidebar($eura_sidebar_class)) {
           <!-- </SorsaShowColores> -->
 
           <?php dynamic_sidebar($eura_sidebar_class); ?>
-          </div>
-          </div><!-- #secondary -->
+        </div>
+      </div><!-- #secondary -->
