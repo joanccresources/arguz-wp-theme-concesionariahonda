@@ -30,11 +30,11 @@ function get_pods_variables()
   $settings = pods('ajustes_del_tema');
   return array(
     // TOP HEADER
-    'facebook' => $settings->field('top_header_facebook'),
-    'instagram' => $settings->field('top_header_instagram'),
-    'btn_reserva' => $settings->field('top_header_agenda_tu_cita'),
+    'facebook'    => $settings->field('top_header_facebook'),
+    'instagram'   => $settings->field('top_header_instagram'),
+    'btn_reserva'     => $settings->field('top_header_agenda_tu_cita'),
     // BOTON FLOTANTE
-    'whatsapp' => $settings->field('flotante_whatsapp'),
+    'whatsapp'     => $settings->field('flotante_whatsapp'),
     // FOOTER
     // 'footer_col1'     => $settings->field('footer_enlaces_columna_1'),
     // 'footer_col2'     => $settings->field('footer_enlaces_columna_2'),
@@ -115,7 +115,7 @@ function divi_engine_wc_translations($translated)
     "Update cart" => "Actualizar carrito",
     "Reviews" => "Reseñas"
   );
-  $translated = str_ireplace(array_keys($text), $text, $translated);
+  $translated = str_ireplace(array_keys($text),  $text,  $translated);
   return $translated;
 }
 
@@ -209,12 +209,12 @@ function insertar_reserva($asesor_id, $fecha, $hora_inicio, $hora_fin, $nombre_c
   $resultado = $wpdb->insert(
     $tabla_reservas,
     array(
-      'asesor_id' => $asesor_id,
-      'fecha' => $fecha,
-      'hora_inicio' => $hora_inicio,
-      'hora_fin' => !empty($hora_fin) ? $hora_fin : null, // Inserta null si hora_fin está vacío
-      'nombre_cliente' => $nombre_cliente,
-      'correo_cliente' => $correo_cliente,
+      'asesor_id'       => $asesor_id,
+      'fecha'           => $fecha,
+      'hora_inicio'     => $hora_inicio,
+      'hora_fin'        => !empty($hora_fin) ? $hora_fin : null, // Inserta null si hora_fin está vacío
+      'nombre_cliente'  => $nombre_cliente,
+      'correo_cliente'  => $correo_cliente,
     ),
     array('%d', '%s', '%s', '%s', '%s', '%s')  // Formatos: %d para números, %s para strings
   );
@@ -496,6 +496,6 @@ function insertar_reserva_callback(WP_REST_Request $request)
   if ($resultado) {
     return new WP_REST_Response(array('success' => true, 'message' => 'Reserva insertada con éxito'), 200);
   } else {
-    return new WP_REST_Response(array('success' => false, 'message' => 'Error al insertar la reserva' . ' - ' . print_r($resultado)), 500);
+    return new WP_REST_Response(array('success' => false, 'message' => 'Error al insertar la reserva' . ' - ' .  print_r($resultado)), 500);
   }
 }

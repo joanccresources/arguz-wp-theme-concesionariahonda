@@ -98,54 +98,11 @@ function get_custom_posttype($args = [], $single_fields = [], $multi_fields = []
         'link' => get_permalink(), /* slug del post*/
         'excerpt' => get_the_excerpt() ?: '',  /* El excerpt o resumen */
         'thumbnail' => $thumbnails, /* La url de la imagen destacada */
-        'date' => get_the_date('d-m-Y'), /* La fecha de publicacion */
         'single_fields' => $single_data, /* Aquí se incluyen todos los campos personalizados simples */
         'multi_fields' => $multi_data, /* Aquí se incluyen todos los campos personalizados arrays */
       ];
     }
     wp_reset_postdata();
-  }
-
-  return $data;
-}
-
-function get_custom_taxonomy($taxonomy, $args = [], $single_fields = [], $multi_fields = []): array
-{
-  // Obtener términos de la taxonomía
-  $terms = get_terms(array_merge(['taxonomy' => $taxonomy], $args));
-  $data = [];
-
-  if (!is_wp_error($terms)) {
-    foreach ($terms as $term) {
-      $term_id = $term->term_id;
-
-      // Obtener los valores de campos personalizados únicos
-      $single_data = [];
-      foreach ($single_fields as $field_name) {
-        $single_data[$field_name] = get_term_meta($term_id, $field_name, true) ?: ''; // Valor vacío si no existe
-      }
-
-      // Obtener los valores de campos personalizados múltiples (ej: imágenes o archivos asociados)
-      $multi_data = [];
-      foreach ($multi_fields as $field_name) {
-        $file_ids = get_term_meta($term_id, $field_name, false) ?: []; // Array vacío si no hay valores
-        $file_urls = array_map(function ($file_id) {
-          return wp_get_attachment_url($file_id);
-        }, $file_ids);
-
-        $multi_data[$field_name] = $file_urls; // Guardar URLs en lugar de IDs
-      }
-
-      $data[] = [
-        'id' => $term_id,
-        'name' => $term->name,
-        'slug' => $term->slug,
-        'description' => $term->description,
-        'link' => get_term_link($term),
-        'single_fields' => $single_data,  // Campos personalizados simples
-        'multi_fields' => $multi_data,    // Campos personalizados múltiples
-      ];
-    }
   }
 
   return $data;
