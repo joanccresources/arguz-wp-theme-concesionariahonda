@@ -21,8 +21,6 @@
       };
     });
 
-    console.log(categories);
-
     let html = `
       <div id="cat-sub-categories">
         <ul class="filter-categories">`;
@@ -34,9 +32,11 @@
             <a href="${
               location.origin + "/product-category" + category.slug
             }" class="filter-categories__link">${category.name}</a>
-            <i class="d-none fa fa-chevron-down open open-${
-              index + 1
-            }" aria-hidden="true"></i>
+            <button class="btn">
+              <i class="fa fa-chevron-down open open-${
+                index + 1
+              }" aria-hidden="true"></i>
+            </button>
           </div>
           <ul class="filter-subcategories">
         `;
@@ -91,6 +91,27 @@
           margin-bottom: 0 !important;
         }
 
+        /*CLOSE*/
+        #cat-sub-categories .filter-categories__item .filter-subcategories{
+          display: none;
+        }
+        /*OPEN*/
+        #cat-sub-categories .filter-categories__item.open .filter-subcategories{
+          display: block;
+        }
+        #cat-sub-categories .filter-categories__item.open .fa-chevron-down{
+          transform: rotate(180deg);
+        }
+        /*SUBCATEGORY*/
+        /*
+        #cat-sub-categories .filter-categories__item:has(.filter-subcategories__link.active) .filter-subcategories{
+          display: block;
+        }
+        #cat-sub-categories .filter-categories__item:has(.filter-subcategories__link.active) .fa-chevron-down{
+          transform: rotate(180deg);
+        }
+        */
+
         #cat-sub-categories a:hover,
         #cat-sub-categories a.active{
           color: red !important;
@@ -104,6 +125,36 @@
       </style>`;
 
     container.insertAdjacentHTML("beforebegin", html);
+  };
+
+  const handleLoadPageOpenMenu = () => {
+    const categoryItem = document.querySelectorAll(".filter-categories__item");
+    if (categoryItem.length === 0) return;
+    Array.from(categoryItem).map((category) => {
+      const subMenuLink = category.querySelectorAll(
+        ".filter-subcategories__link"
+      );
+      if (Array.from(subMenuLink).length === 0) {
+        const btn = category.querySelector("button.btn");
+        btn && btn.classList.add("d-none");
+      } else {
+        Array.from(subMenuLink).forEach((item) => {
+          if (item.classList.contains("active")) {
+            category.classList.add("open");
+          }
+        });
+      }
+    });
+  };
+
+  const handleClickOpenMenu = () => {
+    const categoryItem = document.querySelectorAll(".filter-categories__item");
+    if (categoryItem.length === 0) return;
+    Array.from(categoryItem).map((category) => {
+      const btn = category.querySelector("button.btn");
+      btn &&
+        btn.addEventListener("click", () => category.classList.toggle("open"));
+    });
   };
 
   const activateCategories = () => {
@@ -125,7 +176,9 @@
     }));
     addHTMLFilterCategories(categoriesAndSub);
     activateCategories();
-
+    // Filtrado desplegable
+    handleLoadPageOpenMenu();
+    handleClickOpenMenu();
   };
 
   document.addEventListener("DOMContentLoaded", () => {
