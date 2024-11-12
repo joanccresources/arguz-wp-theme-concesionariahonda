@@ -688,6 +688,28 @@
     });
   };
 
+  const addClassIframe = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("isIframe") === "true") {
+      // document.querySelector("header").style.display = "none";
+      document.querySelector("html").classList.add("iframe");
+      const elements = [];
+      elements.push(
+        document.querySelector("html.iframe #navbar"),
+        document.querySelector("html.iframe #footer"),
+        document.querySelector("html.iframe .whatsapp-container"),
+        document.querySelector("html.iframe #modal-buscador"),
+        document.querySelector("html.iframe #searchModal"),
+        document.querySelector("html.iframe #navbarOffcanvas"),
+        document.querySelector("html.iframe #backtotop"),
+        document.querySelector("html.iframe #preloader")
+      );
+      elements.forEach((element) => element.remove());
+      // if (!header || !footer) return;
+      // header.remove();
+    }
+  };
+
   const initDomReady = () => {
     // Obtener en caso vengan parametros
     getURLParameters();
@@ -698,6 +720,8 @@
     //
     changeSumitForm();
     validateForm();
+    // Agregar clase a iframe
+    addClassIframe();
   };
   addEventListener("DOMContentLoaded", () => {
     initDomReady();
