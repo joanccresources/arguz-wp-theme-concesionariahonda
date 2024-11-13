@@ -7,6 +7,23 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores repellendus reprehenderit iusto saepe ducimus quia ad commodi suscipit inventore facilis architecto nesciunt dolores nihil sit iure itaque, soluta magni temporibus!</p>
       </div>
     </div> -->
+    <div class="mt-2 mt-md-4 row row-iframe text-center d-none">
+      <p class="mb-5">AGENDA TU CITA</p>
+      <style>
+        .row-iframe>p {
+          font-family: "Rajdhani", Sans-serif;
+          font-size: 40px;
+          font-weight: 700;
+          color: #1D1D1D;
+        }
+
+        @media(max-width: 767px) {
+          .row-iframe>p {
+            font-size: 34px;
+          }
+        }
+      </style>
+    </div>
     <div class="row">
       <div class="col-md-6">
         <!-- loader -->
@@ -26,7 +43,8 @@
             </div>
             <div id="resume" class="resume mt-2 d-none">
               <p class="h3 mb-0 text-center">Resumen de la reserva</p>
-              <small class="d-block text-center">Por favor revisa los detalles de tu cita a continuación y confirma:</small>
+              <small class="d-block text-center">Por favor revisa los detalles de tu cita a continuación y
+                confirma:</small>
               <table class="table table-borderless mt-2">
                 <tbody>
                   <tr class="row-location">
@@ -49,14 +67,16 @@
               </table>
             </div>
           </div>
-          <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/gif-loader.gif" alt="Image Loader" class="reserva-image-loader" width="60" height="60">
+          <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/gif-loader.gif" alt="Image Loader"
+            class="reserva-image-loader" width="60" height="60">
         </div>
       </div>
 
       <div class="col-md-6 mt-3 mt-md-0">
         <div id="form-reserva">
           <?= do_shortcode('[contact-form-7 id="467e44a" title="Reserva tu cita"]'); ?>
-          <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/gif-loader.gif" alt="Image Loader" class="reserva-image-loader" width="60" height="60">
+          <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/gif-loader.gif" alt="Image Loader"
+            class="reserva-image-loader" width="60" height="60">
         </div>
       </div>
     </div>

@@ -705,8 +705,8 @@
         document.querySelector("html.iframe #preloader")
       );
       elements.forEach((element) => element.remove());
-      // if (!header || !footer) return;
-      // header.remove();
+
+      document.querySelector("html.iframe .row-iframe")?.classList.remove("d-none");
     }
   };
 
