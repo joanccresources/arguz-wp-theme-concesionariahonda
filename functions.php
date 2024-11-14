@@ -45,6 +45,7 @@ function get_pods_variables()
 function eura_enqueue_style()
 {
   wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=' . time(), array(), null, true);
+  wp_enqueue_style('font-awesome', 'https://concesionariahonda.sorsa.pe/wp-content/plugins/yith-woocommerce-wishlist/assets/css/font-awesome.css?ver=4.7.0', array(), '4.7.0', 'all');
 
   // Obtener las variables desde Pods
   $variables_pods = get_pods_variables();
@@ -117,6 +118,25 @@ function divi_engine_wc_translations($translated)
   );
   $translated = str_ireplace(array_keys($text), $text, $translated);
   return $translated;
+}
+add_action('wp_footer', 'custom_shop_translation_script');
+function custom_shop_translation_script()
+{
+  if (is_shop()) { // Asegúrate de que se aplique solo en la página de tienda
+    ?>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const resultCountElement = document.querySelector(".woocommerce-topbar .woocommerce-result-count");
+        if (resultCountElement) {
+          resultCountElement.textContent = resultCountElement.textContent
+            .replace("Showing", "Mostrando")
+            .replace("of", "de")
+            .replace("results", "resultados");
+        }
+      });
+    </script>
+    <?php
+  }
 }
 
 /*** Quitar decimales si no los tiene en WooCommerce ***/

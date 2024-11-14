@@ -134,6 +134,7 @@
       const subMenuLink = category.querySelectorAll(
         ".filter-subcategories__link"
       );
+      // No tiene subElementos?
       if (Array.from(subMenuLink).length === 0) {
         const btn = category.querySelector("button.btn");
         btn && btn.classList.add("d-none");
@@ -146,7 +147,6 @@
       }
     });
   };
-
   const handleClickOpenMenu = () => {
     const categoryItem = document.querySelectorAll(".filter-categories__item");
     if (categoryItem.length === 0) return;
