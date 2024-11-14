@@ -13,22 +13,22 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
 do_action('woocommerce_before_main_content');
 
-$post_page_id       = get_option('woocommerce_shop_page_id');
-$product_sidebar    = isset($eura_opt['product_sidebar']) ? $eura_opt['product_sidebar'] : '';
+$post_page_id = get_option('woocommerce_shop_page_id');
+$product_sidebar = isset($eura_opt['product_sidebar']) ? $eura_opt['product_sidebar'] : '';
 
 // Blog breadcrumb
 if (isset($eura_opt['blog_title'])) {
-  $hide_breadcrumb        = $eura_opt['hide_breadcrumb'];
-  $hide_blog_banner       = $eura_opt['hide_blog_banner'];
-  $hide_page_title        = $eura_opt['hide_page_title'];
-  $blog_banner_shape      = $eura_opt['blog_banner_shape']['url'];
-  $blog_banner_img        = $eura_opt['blog_banner_img']['url'];
+  $hide_breadcrumb = $eura_opt['hide_breadcrumb'];
+  $hide_blog_banner = $eura_opt['hide_blog_banner'];
+  $hide_page_title = $eura_opt['hide_page_title'];
+  $blog_banner_shape = $eura_opt['blog_banner_shape']['url'];
+  $blog_banner_img = $eura_opt['blog_banner_img']['url'];
 } else {
-  $hide_breadcrumb        = false;
-  $hide_blog_banner       = false;
-  $hide_page_title        = false;
-  $blog_banner_shape      = false;
-  $blog_banner_img        = false;
+  $hide_breadcrumb = false;
+  $hide_blog_banner = false;
+  $hide_page_title = false;
+  $blog_banner_shape = false;
+  $blog_banner_img = false;
 }
 
 // Blog page link
@@ -66,26 +66,31 @@ endif;
                 yoast_breadcrumb('<p class="eura-seo-breadcrumbs" id="breadcrumbs">', '</p>');
               } else { ?>
                 <ul class="br-menu list-unstyle">
-                  <li class="d-inline-block position-relative"><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'eura'); ?></a></li>
+                  <li class="d-inline-block position-relative"><a
+                      href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'eura'); ?></a></li>
                   <li class="d-inline-block position-relative active"><?php woocommerce_page_title(); ?></li>
                   <?php ?>
 
                 </ul>
-            <?php
+                <?php
               }
             endif; ?>
           </div>
         </div>
       </div>
-      <?php if ($blog_banner_shape):  ?>
-        <img src="<?php echo esc_url($blog_banner_shape) ?>" class="br-shape position-absolute" alt="<?php echo esc_attr__('images', 'eura'); ?>">
+      <?php if ($blog_banner_shape): ?>
+        <img src="<?php echo esc_url($blog_banner_shape) ?>" class="br-shape position-absolute"
+          alt="<?php echo esc_attr__('images', 'eura'); ?>">
       <?php else: ?>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/br-shape.webp') ?>" class="br-shape position-absolute" alt="Shape">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/br-shape.webp') ?>"
+          class="br-shape position-absolute" alt="Shape">
       <?php endif; ?>
-      <?php if ($blog_banner_img):  ?>
-        <img src="<?php echo esc_url($blog_banner_img) ?>" class="br-img position-absolute" alt="<?php echo esc_attr__('images', 'eura'); ?>">
+      <?php if ($blog_banner_img): ?>
+        <img src="<?php echo esc_url($blog_banner_img) ?>" class="br-img position-absolute"
+          alt="<?php echo esc_attr__('images', 'eura'); ?>">
       <?php else: ?>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/br-img.webp') ?>" class="br-img position-absolute" alt="Shape">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/br-img.webp') ?>"
+          class="br-img position-absolute" alt="Shape">
       <?php endif; ?>
     </div>
   </div>
@@ -105,13 +110,13 @@ echo '      <div class="order-2 order-lg-1 col-lg-4 mt-3 mt-lg-0">';
 $included_slugs = array('moto', 'motokar', 'alta-gama');
 $product_categories = get_terms(array(
   'taxonomy' => 'product_cat',
-  'slug'       => $included_slugs,
+  'slug' => $included_slugs,
   'hide_empty' => false,
   'meta_key' => 'orden_modelo',
   'orderby' => 'meta_value_num',
   'order' => 'ASC',
 ));
-if (! empty($product_categories) && ! is_wp_error($product_categories)) {
+if (!empty($product_categories) && !is_wp_error($product_categories)) {
   echo '        <ul class="modelos-shop-sorsa">';
   foreach ($product_categories as $category) {
     $title = esc_html($category->name);
@@ -184,8 +189,8 @@ echo '</div>'; /*.concesionaria-hero*/
               <?php elseif ($eura_shop_cat_sidebar == 'right'): ?>
                 <div class="col-lg-8 col-md-12 asd_2">
                 <?php endif;
-            } else {
-              if ($product_sidebar == 'left-sidebar'): ?>
+        } else {
+          if ($product_sidebar == 'left-sidebar'): ?>
                   <?php do_action('woocommerce_sidebar'); ?>
                   <!-- /shop -->
                   <!-- sorsa -->
@@ -197,9 +202,9 @@ echo '</div>'; /*.concesionaria-hero*/
                       <?php else: ?>
                         <?php do_action('woocommerce_sidebar'); ?>
                         <div class="col-lg-8 col-md-12 asd_5">
-                      <?php endif;
-                  }
-                } else { ?>
+                        <?php endif;
+        }
+      } else { ?>
                       <div class="col-lg-12 col-md-12">
                       <?php } ?>
                       <?php if (woocommerce_product_loop()) { ?>
@@ -208,7 +213,7 @@ echo '</div>'; /*.concesionaria-hero*/
                           <?php do_action('woocommerce_before_shop_loop'); ?>
                         </div>
 
-                      <?Php
+                        <?Php
                         woocommerce_product_loop_start();
 
                         if (wc_get_loop_prop('total')) {
@@ -240,54 +245,54 @@ echo '</div>'; /*.concesionaria-hero*/
                          */
                         do_action('woocommerce_no_products_found');
                       } ?>
-                      </div> <!-- end clo-8 -->
+                    </div> <!-- end clo-8 -->
 
-                      <?php
-                      if (isset($_GET['shop'])) {
-                        if ($eura_shop_cat_sidebar == 'right')
-                          do_action('woocommerce_sidebar');
-                      } else {
-                        if ($product_sidebar == 'right-sidebar')
-                          do_action('woocommerce_sidebar');
-                      } ?>
+                    <?php
+                    if (isset($_GET['shop'])) {
+                      if ($eura_shop_cat_sidebar == 'right')
+                        do_action('woocommerce_sidebar');
+                    } else {
+                      if ($product_sidebar == 'right-sidebar')
+                        do_action('woocommerce_sidebar');
+                    } ?>
+                  </div>
+                </div>
+              </div>
+              <?php
+              /**
+               * Hook: woocommerce_after_main_content.
+               *
+               * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+               */
+              do_action('woocommerce_after_main_content');
+              ?>
+              <!-- BEFORE FOOTER  -->
+              <?php
+              $banner_footer_id = get_post_meta($shop_page_id, 'banner_footer', true);
+              $banner_footer_url = wp_get_attachment_url($banner_footer_id);
+              if ($banner_footer_url):
+                ?>
+                <div class="banner-footer" id="banner-footer">
+                  <div class="banner-footer__figure">
+                    <img src="<?= esc_url($banner_footer_url) ?>" alt="Banner Footer" class="banner-footer__img">
+                  </div>
+                  <div class="banner-footer__content">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <a target="_blank"
+                            href="https://api.whatsapp.com/send/?phone=51984707798&text&type=phone_number&app_absent=0"
+                            class="banner-footer__btn">COTIZA <span>AQUI</span></a>
                         </div>
                       </div>
                     </div>
-                    <?php
-                    /**
-                     * Hook: woocommerce_after_main_content.
-                     *
-                     * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-                     */
-                    do_action('woocommerce_after_main_content');
-                    ?>
-                    <!-- BEFORE FOOTER  -->
-                    <?php
-                    $banner_footer_id = get_post_meta($shop_page_id, 'banner_footer', true);
-                    $banner_footer_url = wp_get_attachment_url($banner_footer_id);
-                    if ($banner_footer_url):
-                    ?>
-                      <div class="banner-footer" id="banner-footer">
-                        <div class="banner-footer__figure">
-                          <img src="<?= esc_url($banner_footer_url) ?>" alt="Banner Footer" class="banner-footer__img">
-                        </div>
-                        <div class="banner-footer__content">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-12">
-                                <a
-                                  target="_blank"
-                                  href="https://wa.me/51954691632?text=¡Hola," class="banner-footer__btn">COTIZA <span>AQUI</span></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <?php endif; ?>
-                    <?php
-                    /**
-                     * Hook: woocommerce_sidebar.
-                     *
-                     * @hooked woocommerce_get_sidebar - 10
-                     */
-                    get_footer('shop'); ?>
+                  </div>
+                </div>
+              <?php endif; ?>
+              <?php
+              /**
+               * Hook: woocommerce_sidebar.
+               *
+               * @hooked woocommerce_get_sidebar - 10
+               */
+              get_footer('shop'); ?>

@@ -181,6 +181,8 @@
     handleClickOpenMenu();
   };
 
+  
+
   document.addEventListener("DOMContentLoaded", () => {
     initDOMReady();
   });

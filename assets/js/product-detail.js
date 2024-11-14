@@ -53,9 +53,26 @@
     });
   };
 
+  const changeSrcFeaturedImage = () => {
+    const srcImages = document.querySelectorAll(
+      ".widget_top_rated_products .product_list_widget li img"
+    );
+
+    Array.from(srcImages).forEach((img) => {
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+      const src = img.getAttribute("src");
+      if (!src) return;
+      img.removeAttribute("src");
+      const newSrc = src.split("-350x350").join("");
+      img.setAttribute("src", newSrc);
+    });
+  };
+
   const initDomReady = () => {
     sendContactForm();
     addInput();
+    changeSrcFeaturedImage();
   };
 
   document.addEventListener("DOMContentLoaded", () => {
