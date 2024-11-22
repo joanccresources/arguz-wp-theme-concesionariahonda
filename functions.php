@@ -61,6 +61,7 @@ function eura_enqueue_style()
     // Agregar el script de Flatpickr
     wp_enqueue_script('flatpickr-script', 'https://cdn.jsdelivr.net/npm/flatpickr', array(), null, true);
     wp_enqueue_script('agenda-tu-cita-script', get_stylesheet_directory_uri() . '/assets/js/agenda-tu-cita.js?v=' . time(), array(), null, true);
+    wp_enqueue_script('agenda-tu-cita-contact-form-script', get_stylesheet_directory_uri() . '/assets/js/agenda-tu-cita-contact-form.js?v=' . time(), array(), null, true);
   }
   if (is_product()) {
     wp_enqueue_script('product-detail-script', get_stylesheet_directory_uri() . '/assets/js/product-detail.js?v=' . time(), array(), null, true);

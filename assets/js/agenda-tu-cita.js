@@ -603,8 +603,13 @@
         "input:not([type='hidden'],[type='submit'],[type='email'],[name='ano_modelo'])"
       );
       Array.from($inputs).forEach(($input) => {
-        if ($input.value.trim().length === 0) cont++;
+        // Si estan vacios aumentamos el contador ya que aun no se debe habilitar el btn
+        if ($input.value.trim().length === 0) {
+          console.log($input + " - " + $input.value);
+          cont++;
+        }
       });
+      console.log({ cont });
       cont > 0
         ? $btnSend.classList.add("no-validate")
         : $btnSend.classList.remove("no-validate");
@@ -706,7 +711,9 @@
       );
       elements.forEach((element) => element.remove());
 
-      document.querySelector("html.iframe .row-iframe")?.classList.remove("d-none");
+      document
+        .querySelector("html.iframe .row-iframe")
+        ?.classList.remove("d-none");
     }
   };
 
