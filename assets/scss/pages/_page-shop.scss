@@ -562,7 +562,8 @@ body.woo-slug-product {
   .hero-product {
     background-color: #efefef;
     &__logo {
-      width: 127px;
+      width: 227px; 
+      max-width: 100%;
     }
     &__title-content {
       margin-top: 32px;

@@ -363,3 +363,11 @@
   // }
   // home-tracking__content
 }
+
+#home-comunidad-motera {
+  :not(:has(.blog-card)) {
+    .noticias-disponibles {
+      display: block !important;
+    }
+  }
+}

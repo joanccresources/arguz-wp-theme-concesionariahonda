@@ -186,7 +186,7 @@ function shortcode_home_modelos($atts)
   $included_slugs = array('moto', 'motokar', 'alta-gama');
   $product_categories = get_terms(array(
     'taxonomy' => 'product_cat',
-    'slug'       => $included_slugs, // Solo incluir estas categorías
+    'slug' => $included_slugs, // Solo incluir estas categorías
     'hide_empty' => false, // true para ocultar las categorías vacías
     'meta_key' => 'orden_modelo',
     'orderby' => 'meta_value_num',
@@ -194,23 +194,27 @@ function shortcode_home_modelos($atts)
   ));
 
   // Comprobar si hay categorías disponibles
-  if (! empty($product_categories) && ! is_wp_error($product_categories)) {
-    echo '<div class="short-home-modelos">';    
+  if (!empty($product_categories) && !is_wp_error($product_categories)) {
+    echo '<div class="short-home-modelos">';
     foreach ($product_categories as $category) {
       $title = esc_html($category->name);
       // FALSE para obtener todas las imagenes como array
-      $galeria = get_term_meta($category->term_id, 'galeria', false); 
+      $galeria = get_term_meta($category->term_id, 'galeria', false);
+
+      $enlace = get_term_meta($category->term_id, 'enlace', true);
 
       echo '<div class="content-modelos">';
       echo '  <h3 class="content-modelos__title">' . $title . '</h3>';
-      if (! empty($galeria) && is_array($galeria)) {
+      if (!empty($galeria) && is_array($galeria)) {
         echo '<div class="modelos-list">';
         foreach ($galeria as $imagen_id) {
           $imagen_url = wp_get_attachment_url($imagen_id);
           if ($imagen_url) {
             echo '<div class="modelos-list__item">';
             echo '  <div class="modelos-list__link">';
-            echo '    <img src="' . esc_url($imagen_url) . '" alt="' . esc_attr($title) . '" class="modelos-list__img" />';
+            echo '    <a href="' . esc_url($enlace) . '">';
+            echo '      <img src="' . esc_url($imagen_url) . '" alt="' . esc_attr($title) . '" class="modelos-list__img" />';
+            echo '    </a>';
             echo '  </div>';
             echo '</div>';
           }
@@ -236,12 +240,12 @@ function shortcode_home_promocion($atts)
   // Obtener categorías de productos
   $product_categories = get_terms(array(
     'taxonomy' => 'promociones',
-    'slug'       => $included_slugs, // Solo incluir estas categorías
+    'slug' => $included_slugs, // Solo incluir estas categorías
     'hide_empty' => false, // true para ocultar las categorías vacías 
   ));
 
   // Comprobar si hay categorías disponibles
-  if (! empty($product_categories) && ! is_wp_error($product_categories)) {
+  if (!empty($product_categories) && !is_wp_error($product_categories)) {
     echo '<div class="short-home-promocion">';
     // Recorrer cada categoría de producto
     foreach ($product_categories as $category) {
@@ -381,7 +385,7 @@ function shortcode_home_mas_vendidos($atts)
       echo '        <img src="' . $product_image_url . '" alt="' . get_the_title() . '" class="card-mas-vendidos__img"/>';
       echo '      </figure>';
       echo '      <div class="">';
-      if ($terms && ! is_wp_error($terms)) {
+      if ($terms && !is_wp_error($terms)) {
         echo '<p class="card-mas-vendidos__category">';
         $categories = array(); // Array para almacenar los nombres de las categorías
         foreach ($terms as $term) {
