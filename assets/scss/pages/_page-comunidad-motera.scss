@@ -152,3 +152,12 @@
     padding-bottom: 0 !important;
   }
 }
+
+//
+#lo-ultimo {
+  :not(:has(.blog-card)) {
+    .noticias-disponibles {
+      display: block !important;
+    }
+  }
+}
