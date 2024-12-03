@@ -45,6 +45,69 @@
         }
       }
     }
+
+    //
+    .#{$p}__slides {
+      // .swiper-slide-image {
+      .swiper-slide {
+        $height-navbar: 133.05px;
+        // height: 686px;
+        height: calc(100vh + -#{$height-navbar});
+        width: 100%;
+        object-fit: cover;
+        @media (max-width: 1399px) {
+          // height: 586px;
+          min-height: 486px;
+        }
+        @media (max-width: 1199px) {
+          height: 516px;
+        }
+        @media (max-width: 991px) {
+          height: 400px;
+          min-height: 100%;
+        }
+        @media (max-width: 767px) {
+          object-position: -90px 0px;
+        }
+      }
+
+      .swiper-slide-contents {
+        @media (max-width: 767px) {
+          max-width: 100%;
+        }
+      }
+
+      .elementor-image-carousel-wrapper {
+        padding-bottom: 0;
+      }
+
+      //
+      .btn-hero {
+        background-color: #000;
+        color: #fff;
+        font-size: 18px;
+        padding-block: 18px;
+        padding-inline: 30px;
+        border-radius: inherit;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.85);
+        }
+      }
+
+      // Bullets
+      .swiper-pagination {
+        padding-bottom: 30px;
+      }
+      .swiper-pagination-bullet {
+        width: 16px;
+        height: 16px;
+        background: $rojo-sorsa-02;
+        &-active {
+          // color: $rojo-sorsa-02;
+          // opacity: 1;
+        }
+      }
+    }
   }
 
   &.home-hero {
