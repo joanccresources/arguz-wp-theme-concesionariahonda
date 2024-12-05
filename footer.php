@@ -30,7 +30,7 @@ $footer_copyright = $settings->field('footer_copyright');
               <img src="<?= get_stylesheet_directory_uri() ?>/assets/img/sorsa-motors.svg" alt="Logo">
             </a>
           </figure>
-          <p class="text-white">Somos un grupo empresarial familiar con casi 30 años en el sector automotriz, comprometidos con el desarrollo sotenible.</p>
+          <p class="text-white">Somos un grupo empresarial familiar con más de 25 años en el sector automotriz, comprometidos con el desarrollo sostenible</p>
         </div>
         <div class="col-md-3 col-slugs">
           <?php if ($footer_col1): ?>
