@@ -3,7 +3,7 @@
 // Footer
 (() => {
   const urlAssets =
-    "https://concesionariahonda.sorsa.pe/wp-content/themes/eura-child-sorsa/assets";
+    "https://honda.sorsa.pe/wp-content/themes/eura-child-sorsa/assets";
 
   const changeFormContactFooter = () => {
     const form = document.querySelector("form:has(>.form-footer-contact)");

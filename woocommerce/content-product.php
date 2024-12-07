@@ -1,6 +1,6 @@
 <?php
 /*
-URL: concesionariahonda.sorsa.pe/shop/
+URL: honda.sorsa.pe/shop/
 UI: Card de cada Producto
 */
 defined('ABSPATH') || exit;

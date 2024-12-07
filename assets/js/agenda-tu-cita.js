@@ -1,7 +1,7 @@
 (() => {
-  const domain = "https://concesionariahonda.sorsa.pe/wp-json/wp/v2";
+  const domain = "https://honda.sorsa.pe/wp-json/wp/v2";
   const domainReserva =
-    "https://concesionariahonda.sorsa.pe/wp-json/asesores/v1";
+    "https://honda.sorsa.pe/wp-json/asesores/v1";
   const endpoint = {
     asesor: `${domain}/asesor`,
     ubicacion: `${domain}/ubicacion`,

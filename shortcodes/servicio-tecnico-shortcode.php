@@ -71,7 +71,7 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
               <div class="card-tienda__info">
                 <!--
                 <div class="card-tienda__logo-parent">
-                  <img src="https://concesionariahonda.sorsa.pe/wp-content/uploads/2024/09/logo-sorsa-main.svg" alt="Logo" class="card-tienda__logo">
+                  <img src="https://honda.sorsa.pe/wp-content/uploads/2024/09/logo-sorsa-main.svg" alt="Logo" class="card-tienda__logo">
                 </div>
                 -->
                 <h6 class="card-tienda__title">
@@ -87,7 +87,7 @@ function shortcode_servicio_tecnico_sorsa_cards($atts)
                   </div>
                   <!--
                   <div class="btn-rojo-blanco">
-                    <a href="https://concesionariahonda.sorsa.pe/agenda-tu-cita/">AGENDA TU CITA</a>
+                    <a href="https://honda.sorsa.pe/agenda-tu-cita/">AGENDA TU CITA</a>
                   </div>
                   -->
                 </div>

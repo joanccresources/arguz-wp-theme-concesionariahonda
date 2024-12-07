@@ -22,14 +22,14 @@ if (!is_active_sidebar($eura_sidebar_class)) {
     if (is_woocommerce()) { ?>
       <div class="new-filters">
         <div class="breadcrumb">
-          <a style="color: #000000ff;" href="https://concesionariahonda.sorsa.pe/">
+          <a style="color: #000000ff;" href="https://honda.sorsa.pe/">
             <i class="fa fa-home" style="font-style: normal;" aria-hidden="true"></i>
           </a>
           <span class="ubuntu-light" style="color: #000000ff; font-size: 16px; font-weight: 400;">
             / MOTOS Y MOTOKARS</span>
         </div>
         <div class="clean-filters">
-          <a class="clean-filters__link" href="https://concesionariahonda.sorsa.pe/shop/#main-content-shop"
+          <a class="clean-filters__link" href="https://honda.sorsa.pe/shop/#main-content-shop"
             onclick="location.reload();">Limpiar todo</a>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <?php
 /*
-  URL: concesionariahonda.sorsa.pe/shop/producto-01
+  URL: honda.sorsa.pe/shop/producto-01
   UI: All
 */
 global $eura_opt;

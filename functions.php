@@ -45,7 +45,7 @@ function get_pods_variables()
 function eura_enqueue_style()
 {
   wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/main.js?v=' . time(), array(), null, true);
-  wp_enqueue_style('font-awesome', 'https://concesionariahonda.sorsa.pe/wp-content/plugins/yith-woocommerce-wishlist/assets/css/font-awesome.css?ver=4.7.0', array(), '4.7.0', 'all');
+  wp_enqueue_style('font-awesome', 'https://honda.sorsa.pe/wp-content/plugins/yith-woocommerce-wishlist/assets/css/font-awesome.css?ver=4.7.0', array(), '4.7.0', 'all');
 
   // Obtener las variables desde Pods
   $variables_pods = get_pods_variables();
