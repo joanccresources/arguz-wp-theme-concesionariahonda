@@ -101,7 +101,7 @@ body {
 
   &.category[class*="category-"] /* Categoria */,
   &.tag[class*="tag-"] /* Tag */ {
-    .page-banner-list{
+    .page-banner-list {
       display: none !important;
     }
     .page-banner-area {
@@ -126,4 +126,10 @@ body {
       }
     }
   }
+}
+
+// Se quitaran las animaciones
+[data-cue] {
+  opacity: 1 !important;
+  animation: none !important;
 }

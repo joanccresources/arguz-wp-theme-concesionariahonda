@@ -472,4 +472,8 @@
       display: block !important;
     }
   }
+
+  .row:has(> [data-cue="slideInUp"]) {
+    margin-top: 15px;
+  }
 }
