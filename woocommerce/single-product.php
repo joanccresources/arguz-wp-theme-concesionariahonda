@@ -100,12 +100,23 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 <?php endif; ?>
 
 
-<!-- HERO BEGIN-->
+<!-- *****************************HERO BEGIN***************************** -->
 <?php
 $product_id = get_the_ID();
 $product_cats = wp_get_post_terms($product_id, 'product_cat');
+// echo "<pre style='line-height: 1.1;'>";
+// print_r($product_cats);
+// echo "</pre>";
 if (!empty($product_cats) && !is_wp_error($product_cats)):
-  $product_cat = $product_cats[0];
+
+  // Selecciona la categoría principal o la primera del array
+  $main_category = array_filter($product_cats, function ($cat) {
+    return $cat->parent === 0;
+  });
+
+
+  // $product_cat = $product_cats[0];
+  $product_cat = !empty($main_category) ? array_values($main_category)[0] : $product_cats[0];
   $category_id = $product_cat->term_id;
 
   $hero_logo = "";
