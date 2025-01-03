@@ -141,7 +141,7 @@ if (!empty($product_cats) && !is_wp_error($product_cats)):
 
   if ($hero_imagen && $hero_titulo):
     ?>
-    <div class="hero-product" id="hero-product">
+    <div class="hero-product d-none" id="hero-product">
       <div class="container">
         <div class="row">
           <div class="col-md-4 align-self-center py-3 py-md-0">
@@ -170,7 +170,7 @@ if (!empty($product_cats) && !is_wp_error($product_cats)):
 <?php endif; ?>
 <!-- HERO END-->
 
-<div class="products_details ptb-150 joan_02">
+<div class="products_details ptb-150 joan_02" id="show-product">
   <div class="container">
     <div class="row">
       <?php if (is_active_sidebar('shop')): ?>

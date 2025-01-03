@@ -69,7 +69,14 @@
     });
   };
 
+  const scrollToProductDetails = () => {
+    const targetSection = document.querySelector("#show-product");
+    if (!targetSection) return;
+    targetSection.scrollIntoView({ behavior: "smooth" });
+  };
+
   const initDomReady = () => {
+    scrollToProductDetails();
     sendContactForm();
     addInput();
     changeSrcFeaturedImage();

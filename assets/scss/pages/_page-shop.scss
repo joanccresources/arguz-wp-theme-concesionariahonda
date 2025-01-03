@@ -898,3 +898,11 @@ body.woo-slug-product {
     top: 0 !important;
   }
 }
+
+// En el detalle del producto
+#show-product {
+  scroll-margin-top: 160px; /* Ajusta según la altura de tu header */
+  @media (max-width: 767px) {
+    scroll-margin-top: 100px;
+  }
+}

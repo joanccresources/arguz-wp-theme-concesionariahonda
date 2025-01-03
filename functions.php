@@ -69,7 +69,9 @@ function eura_enqueue_style()
   if (is_shop() || is_product_category()) {
     wp_enqueue_script('shop-script', get_stylesheet_directory_uri() . '/assets/js/shop.js?v=' . time(), array(), null, true);
   }
-
+  // if (is_product()) {
+  //   wp_enqueue_script('single-product-script', get_stylesheet_directory_uri() . '/assets/js/single-product.js?v=' . time(), array(), null, true);
+  // }
   wp_enqueue_style("parent-style", get_parent_theme_file_uri("/style.css"));
 }
 add_action('wp_enqueue_scripts', 'eura_enqueue_style');
