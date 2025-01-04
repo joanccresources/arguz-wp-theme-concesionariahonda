@@ -930,7 +930,20 @@ body.woo-slug-product {
     }
   }
 
-  // box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+  //
+  .btn-ficha-tecnica {
+    font-weight: 700;
+    background-color: red;
+    color: #fff;
+    font-size: 18px;
+    padding-block: 8px;
+    padding-inline: 30px;
+    display: inline-block;
+    transition: all 0.25s;
+    &:hover {
+      background-color: darken(#ff0000, 10%);
+    }
+  }
 
   @media (max-width: 767px) {
     top: 0 !important;

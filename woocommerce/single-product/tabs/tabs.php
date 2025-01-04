@@ -11,7 +11,7 @@ if (! defined('ABSPATH')) {
 $product_tabs = apply_filters('woocommerce_product_tabs', array());
 
 if (! empty($product_tabs)) : ?>
-	<div class="row pb-5">
+	<div class="row pb-4">
 		<div class="col-lg-10 mx-auto">
 			<div class="woocommerce-tabs wc-tabs-wrapper products-details-tabs _sorsa_tabs">
 				<ul class="nav nav-tabs tabs wc-tabs" role="tablist" id="tabs">

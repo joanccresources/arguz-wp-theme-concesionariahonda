@@ -24,7 +24,6 @@ if (post_password_required()) {
    */
   //do_action( 'woocommerce_before_single_product_summary' );
   
-
   $attachment_ids = $product->get_gallery_image_ids();
 
   $reviews_enabled = get_option('woocommerce_enable_reviews');
@@ -415,6 +414,21 @@ if (post_password_required()) {
   remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
   do_action('woocommerce_after_single_product_summary');
   ?>
+  <!-- show Button "Ver ficha técnica" -->
+  <?php
+  $product_id = get_the_ID();
+  $ficha_tecnica_id = get_post_meta($product_id, 'ficha_tecnica', true);
+  $ficha_tecnica_url = wp_get_attachment_url($ficha_tecnica_id);
+
+  if (!empty($ficha_tecnica_url)): ?>
+    <div class="row">
+      <div class="col-12 text-center mx-auto">
+        <a href="<?php echo esc_url($ficha_tecnica_url); ?>" target="_blank" rel="noopener noreferrer"
+          class="btn-ficha-tecnica">Ver ficha técnica</a>
+      </div>
+    </div>
+  <?php endif; ?>
+
   <!-- Sorsa -->
   <div class="row">
     <div class="col-lg-10 mx-auto">
