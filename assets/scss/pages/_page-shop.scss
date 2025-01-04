@@ -528,9 +528,9 @@ body.woo-slug-product {
     .d-flex:has(> .products-review.ratings) {
       display: none !important;
     }
-    .price {
-      display: none !important;
-    }
+    // .price {
+    //   display: none !important;
+    // }
     .products-info {
       li:nth-of-type(1) {
         display: none !important;
@@ -562,7 +562,7 @@ body.woo-slug-product {
   .hero-product {
     background-color: #efefef;
     &__logo {
-      width: 227px; 
+      width: 227px;
       max-width: 100%;
     }
     &__title-content {
@@ -650,6 +650,13 @@ body.woo-slug-product {
           height: 30px !important;
           border-radius: inherit !important;
           border: none !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+          &.selected {
+            border: 1px solid rgba(0, 0, 0, 0.5) !important;
+          }
+          &:hover {
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+          }
           &::before {
             border: none !important;
           }
@@ -894,15 +901,38 @@ body.woo-slug-product {
   //   }
   // }
 
+  // En el detalle del producto
+  #show-product {
+    scroll-margin-top: 160px; /* Ajusta según la altura de tu header */
+    @media (max-width: 767px) {
+      scroll-margin-top: 100px;
+    }
+  }
+
+  .product_list_widget {
+    .woocommerce-Price-amount {
+      &.amount {
+        display: none !important;
+      }
+    }
+  }
+
+  .label-honda-price {
+    .woocommerce-Price-amount {
+      &.amount {
+        bdi {
+          color: red;
+          font-size: 28px;
+          display: inline-block;
+          margin-top: 3px;
+        }
+      }
+    }
+  }
+
+  // box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+
   @media (max-width: 767px) {
     top: 0 !important;
-  }
-}
-
-// En el detalle del producto
-#show-product {
-  scroll-margin-top: 160px; /* Ajusta según la altura de tu header */
-  @media (max-width: 767px) {
-    scroll-margin-top: 100px;
   }
 }

@@ -104,9 +104,6 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 <?php
 $product_id = get_the_ID();
 $product_cats = wp_get_post_terms($product_id, 'product_cat');
-// echo "<pre style='line-height: 1.1;'>";
-// print_r($product_cats);
-// echo "</pre>";
 if (!empty($product_cats) && !is_wp_error($product_cats)):
 
   // Selecciona la categoría principal o la primera del array
@@ -212,7 +209,7 @@ if (!empty($product_cats) && !is_wp_error($product_cats)):
 
                     while (have_posts()):
                       the_post();
-
+                      // Nos lleva a la plantilla content-single-product.php
                       wc_get_template_part('content', 'single-product');
 
                     endwhile;

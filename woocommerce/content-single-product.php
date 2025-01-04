@@ -313,8 +313,6 @@ if (post_password_required()) {
           <div>
             <h3 class="woo-product__title"><?= get_the_title(); ?></h3>
           </div>
-
-          <?php /* woocommerce_template_loop_price(); */ ?>
           <?php woocommerce_template_single_excerpt(); ?>
 
           <div class="btn-honda--main mt-4 mt-md-4 mt-xl-5">
@@ -327,6 +325,11 @@ if (post_password_required()) {
             <a href="<?= $whatsapp_url ?>" target="_blank">¡COTIZA AHORA!</a>
           </div>
 
+          <!-- Precio del producto -->
+          <div class="label-honda-price mt-2 mt-md-4">
+            <p class="label-honda-price__txt mb-0 h4">Desde: </p>
+            <?php woocommerce_template_loop_price(); ?>
+          </div>
           <!-- hidden -->
           <div class="product_meta d-none sorsa_">
             <?php woocommerce_template_single_meta(); ?>
