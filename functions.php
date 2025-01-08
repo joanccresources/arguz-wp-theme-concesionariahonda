@@ -69,10 +69,16 @@ function eura_enqueue_style()
   if (is_shop() || is_product_category()) {
     wp_enqueue_script('shop-script', get_stylesheet_directory_uri() . '/assets/js/shop.js?v=' . time(), array(), null, true);
   }
-  // if (is_product()) {
-  //   wp_enqueue_script('single-product-script', get_stylesheet_directory_uri() . '/assets/js/single-product.js?v=' . time(), array(), null, true);
-  // }
   wp_enqueue_style("parent-style", get_parent_theme_file_uri("/style.css"));
+
+
+  // Pasando los estilos del header aqui
+  // wp_enqueue_style(
+  //   'main2-style',
+  //   get_stylesheet_directory_uri() . '/assets/css/main.css',
+  //   array("eura-main-responsive", "eura-style"), // Se carga después de
+  //   filemtime(get_stylesheet_directory() . '/assets/css/main.css')
+  // );
 }
 add_action('wp_enqueue_scripts', 'eura_enqueue_style');
 

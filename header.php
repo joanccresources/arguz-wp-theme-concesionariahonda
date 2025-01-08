@@ -25,8 +25,7 @@
   if (array_key_exists($current_page, $page_styles)) {
     echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/' . $page_styles[$current_page] . '?v=' . time() . '">';
   }
-  // Shop de woocommerce
-  // if (is_shop() || is_product_category()) {
+  // Shop de woocommerce  
   if (is_shop() || is_product_category() || is_product()) {
     echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/assets/css/shop.css?v=' . time() . '">';
   }
