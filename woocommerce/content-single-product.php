@@ -421,7 +421,7 @@ if (post_password_required()) {
   $ficha_tecnica_url = wp_get_attachment_url($ficha_tecnica_id);
 
   if (!empty($ficha_tecnica_url)): ?>
-    <div class="row">
+    <div class="row pb-4">
       <div class="col-12 text-center mx-auto">
         <a href="<?php echo esc_url($ficha_tecnica_url); ?>" target="_blank" rel="noopener noreferrer"
           class="btn-ficha-tecnica">Ver ficha técnica</a>

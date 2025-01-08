@@ -945,6 +945,48 @@ body.woo-slug-product {
     }
   }
 
+  #show-product .woocommerce-product-gallery {
+    .woocommerce-product-gallery__image {
+      & > a {
+        @media (max-width: 767px) {
+          padding-inline: 26px !important;
+        }
+      }
+    }
+  }
+  #tab-description {
+    > table {
+      > tbody {
+        & > tr {
+          & > td {
+            & > table {
+              & > tbody > tr {
+                // :nth-of-type(1)
+                & > td {
+                  @media (max-width: 767px) {
+                    width: 100% !important;
+                    height: initial !important;
+                  }
+                }
+                @media (max-width: 767px) {
+                  display: flex;
+                  flex-wrap: wrap;
+                  height: initial !important;
+                }
+              }
+            }
+            @media (max-width: 767px) {
+              vertical-align: top;
+            }
+          }
+          @media (max-width: 767px) {
+            height: initial !important;
+          }
+        }
+      }
+    }
+  }
+
   @media (max-width: 767px) {
     top: 0 !important;
   }

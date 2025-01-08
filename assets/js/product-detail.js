@@ -75,11 +75,28 @@
     targetSection.scrollIntoView({ behavior: "smooth" });
   };
 
+  const getHeightFrame = () => {
+    const interval = setInterval(() => {
+      const leftListimages = document.querySelector(
+        "#show-product .woocommerce-product-gallery > ol.flex-control-nav.flex-control-thumbs"
+      );
+      const mainProduct = document.querySelector(
+        "#show-product .woocommerce-product-gallery > .flex-viewport"
+      );      
+
+      if (!leftListimages || !mainProduct) return;
+      const heightLeftList = leftListimages.getBoundingClientRect().height;
+      mainProduct.style.minHeight = `${Number(heightLeftList + 6)}px`;
+      clearInterval(interval);
+    }, 250);
+  };
+
   const initDomReady = () => {
     scrollToProductDetails();
     sendContactForm();
     addInput();
     changeSrcFeaturedImage();
+    if (window.innerWidth <= 768) getHeightFrame();
   };
 
   document.addEventListener("DOMContentLoaded", () => {
